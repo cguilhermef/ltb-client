@@ -9,6 +9,7 @@
     align-items: center;
     background-color: $bg-color;
     display: flex;
+    flex: 0 0 auto;
     flex-flow: row;
     justify-content: flex-start;
     height: 60px;

@@ -1,0 +1,24 @@
+.button {
+  background-color: #2C3339;
+  border: 1px solid #e0c481;
+  color: #e0c481;
+  font-size: 12px;
+  height: 32px;
+  padding: .435rem .975rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow .4s linear;
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 0 1px #e0c481;
+    outline: none;
+  }
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  &--primary {
+    background-color: #724c1c;
+  }
+}
