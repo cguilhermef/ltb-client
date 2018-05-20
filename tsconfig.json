@@ -1,8 +1,19 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@env/*": [
+        "environments/*"
+      ]
+    },
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

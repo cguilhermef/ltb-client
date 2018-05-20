@@ -1,1 +1,174 @@
 /* You can add global styles to this file, and also import other style files */
+@import "scss/variables";
+@import "scss/typography";
+@import "scss/view";
+
+html {
+  background: $bg-color url("/assets/images/background.jpg") no-repeat 50% 0/100%;
+  color: #f0f0f0;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  display: flex;
+  height: 100%;
+  position: relative;
+  overflow-y: scroll;
+}
+body {
+  background-color: rgba($bg-color, .4);
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content:center;
+  width: 100px;
+  &__image {
+    display: flex;
+    flex: 0 0 auto;
+    height: auto;
+    width: 100%;
+  }
+}
+.menu {
+  display: flex;
+  flex: 0 0 auto;
+  height: 100%;
+  list-style: none;
+  margin: 0 0 0 1rem;
+  padding: 0;
+  &__item {
+    align-items: center;
+    display: flex;
+    height: 100%;
+  }
+  a.menu__link {
+    border-bottom: 1px solid transparent;
+    color: $link-color;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height:14px;
+    margin: 0 .85em;
+    padding: 22px 0;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 1s cubic-bezier(.06,.81,0,.98);
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+    &--active {
+      border-bottom: 1px solid $border-color;
+      color: #fff;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  margin-left: auto;
+  a.user__link {
+    color: $link-color;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height:14px;
+    margin: 0 .85em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 1s cubic-bezier(.06,.81,0,.98);
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.advertisements-list {
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  margin-top: 2rem;
+  width: 100%;
+  thead {
+    color: $title-color;
+    th {
+      padding-bottom: .5rem;
+    }
+    th:first-child {
+      width: 80px;
+    }
+  }
+  tbody {
+    tr {
+      background-color: #202326;
+      border: 1px solid #2f3639;
+      transition: background-color 0.2s linear;
+      &:hover {
+        background-color: lighten(#202326, 5%);
+      }
+    }
+    td {
+      padding: .5rem;
+      vertical-align: middle;
+    }
+    td:last-child {
+      text-align: right;
+    }
+  }
+  .advertisement {
+    &__icon {
+      height: auto;
+      width: 30px;
+    }
+    &__tier-limits {
+      color: #D5CBA4;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    &__team {
+      color: #D5CBA4;
+      font-weight: 400;
+    }
+  }
+  .members {
+    display: flex;
+    &__icon {
+      border-radius: 50%;
+      display: inline-flex;
+      height: 26px;
+      overflow: hidden;
+      width: 26px;
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+    &__icon + &_icon {
+      margin-left: 5px;
+    }
+  }
+}
+
+.button {
+  background-color: #2C3339;
+  border: 1px solid #e0c481;
+  color: #e0c481;
+  font-size: 12px;
+  padding: .25rem .975rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: box-shadow .4s linear;
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 0 1px #e0c481;
+    outline: none;
+  }
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}

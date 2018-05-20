@@ -1,0 +1,18 @@
+@import "variables";
+
+.view {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 100%;
+  &__header {
+    align-items: center;
+    background-color: $bg-color;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    height: 60px;
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+}
