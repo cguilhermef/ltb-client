@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacanciesComponent implements OnInit {
 
+  showFilters = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
   }
 
 }

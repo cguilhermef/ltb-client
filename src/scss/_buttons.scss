@@ -1,7 +1,63 @@
+@import "variables";
+@import "variables";
+
+@mixin hover($color) {
+  background-color: darken($color, 7.5%);
+  border-color: darken($color, 10%),
+}
+
+@mixin active($color) {
+  background-color: darken($color, 10%);
+  border-color: darken($color, 12.5%),
+}
+
+.btn {
+  border-radius: 0;
+}
+
+@mixin button($button-name, $background-color, $text-color) {
+  .#{$button-name} {
+    color: $text-color;
+    background-color: $background-color;
+    border-color: $background-color;
+
+    &:hover {
+      color: $text-color;
+      @include hover($background-color);
+    }
+
+    &:focus, &.focus {
+      box-shadow: 0 0 0 0.2rem rgba($background-color, 0.5);
+    }
+
+    &.disabled, &:disabled {
+      color: $text-color;
+      background-color: $background-color;
+      border-color: $background-color;
+    }
+
+    &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active,
+    .show > &.dropdown-toggle {
+      color: $text-color;
+      @include active($background-color);
+    }
+
+    &:not(:disabled):not(.disabled):active:focus, &:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba($background-color, 0.5);
+    }
+  }
+}
+
+@include button(btn-primary, #724c1c, #fff);
+@include button(btn-secondary, #2C3339, #e0c481);
+
+
 .button {
   background-color: #2C3339;
   border: 1px solid #e0c481;
   color: #e0c481;
+  cursor: pointer;
   font-size: 12px;
   height: 32px;
   padding: .435rem .975rem;

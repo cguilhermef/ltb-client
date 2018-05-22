@@ -3,6 +3,7 @@
 @import "scss/buttons";
 @import "scss/typography";
 @import "scss/view";
+@import "scss/bootstrap-override";
 
 html {
   background: $bg-color url("/assets/images/background.jpg") no-repeat 50% 0/100%;
@@ -11,81 +12,13 @@ html {
   display: flex;
   height: 100%;
   position: relative;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 body {
   background-color: rgba($bg-color, .4);
   color: $text-color;
   height: 100%;
   width: 100%;
-}
-
-.logo {
-  align-items: center;
-  display: flex;
-  height: 50px;
-  justify-content:center;
-  width: 100px;
-  &__image {
-    display: flex;
-    flex: 0 0 auto;
-    height: auto;
-    width: 100%;
-  }
-}
-.menu {
-  display: flex;
-  flex: 0 0 auto;
-  height: 100%;
-  list-style: none;
-  margin: 0 0 0 1rem;
-  padding: 0;
-  &__item {
-    align-items: center;
-    display: flex;
-    height: 100%;
-  }
-  a.menu__link {
-    border-bottom: 1px solid transparent;
-    color: $link-color;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    line-height:14px;
-    margin: 0 .85em;
-    padding: 22px 0;
-    overflow: hidden;
-    text-transform: uppercase;
-    transition: color 1s cubic-bezier(.06,.81,0,.98);
-    &:hover {
-      color: $link-hover-color;
-      text-decoration: none;
-    }
-    &--active {
-      border-bottom: 1px solid $border-color;
-      color: #fff;
-    }
-  }
-}
-
-.user {
-  display: flex;
-  margin-left: auto;
-  a.user__link {
-    color: $link-color;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    line-height:14px;
-    margin: 0 .85em;
-    overflow: hidden;
-    text-transform: uppercase;
-    transition: color 1s cubic-bezier(.06,.81,0,.98);
-    &:hover {
-      color: $link-hover-color;
-      text-decoration: none;
-    }
-  }
 }
 
 .advertisements-list {

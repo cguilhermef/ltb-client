@@ -1,5 +1,11 @@
-<h3 class="mt-3">Vagas anunciadas</h3>
-<form class="row f filters">
+ <h3 class="mt-5 mb-3">Vagas anunciadas
+  <a
+    (click)="toggleFilters()"
+    class="button button--primary ml-5">Filtrar</a>
+</h3>
+<form
+  *ngIf="showFilters"
+  class="row f filters">
   <div class="col-3 filters__item">
     <label class="f-label">Equipe</label>
     <input class="f-control" placeholder="Digite para buscar">

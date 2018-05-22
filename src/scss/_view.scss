@@ -13,7 +13,30 @@
     flex-flow: row;
     justify-content: flex-start;
     height: 60px;
-    padding: 0 1rem;
     max-width: 100%;
+  }
+  &__body {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  &__footer {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .view {
+    &__footer {
+      align-items: center;
+      background-color: $bg-color;
+      color: $text-color;
+      display: flex;
+      flex: 0 0 auto;
+      font-size: 10px;
+      height: 40px;
+      justify-content: center;
+    }
   }
 }

@@ -1,0 +1,56 @@
+<a
+  (click)="toggleMenuMobile()"
+  class="btn-menu-mobile">
+  <span class="fa fa-bars"></span>
+</a>
+<div class="logo">
+  <img src="assets/images/lol-team-builder.svg" class="logo__image" alt="">
+</div>
+<ul
+  [class.menu--show]="showMenuMobile"
+  class="menu">
+  <li class="menu__item">
+    <a
+      (click)="hideMenuMobile()"
+      routerLinkActive="menu__link--active"
+      routerLink="vacancies" class="menu__link">Vagas</a>
+  </li>
+  <li class="menu__item">
+    <a
+      (click)="hideMenuMobile()"
+      routerLinkActive="menu__link--active"
+      routerLink="teams"
+      class="menu__link">Equipes</a>
+  </li>
+  <li class="menu__item">
+    <a
+      (click)="hideMenuMobile()"
+      class="menu__link">Ajuda</a>
+  </li>
+</ul>
+<div class="user">
+  <a
+    *ngIf="!isLoggedIn"
+    routerLink="login"
+    class="user__login">Entrar</a>
+</div>
+
+<ng-container *ngIf="showLoginForm">
+  <form class="login">
+    <div class="form-group">
+      <label for="email" class="form-control-label">Email</label>
+      <input type="text" id="email" class="form-control form-control-sm">
+    </div>
+    <div class="form-group">
+      <label for="password" class="form-control-label">Senha</label>
+      <input type="password" id="password" class="form-control form-control-sm">
+    </div>
+    <a class="login__forgotten">Esqueci minha senha</a>
+    <div class="login__button">
+      <button
+        (click)="toggleLoginForm()"
+        class="btn btn-secondary">Cancelar</button>
+      <button class="btn btn-primary">Entrar</button>
+    </div>
+  </form>
+</ng-container>

@@ -1,0 +1,137 @@
+@import "src/scss/variables";
+
+:host {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-menu-mobile {
+  padding: 1rem;
+}
+
+.logo {
+  align-items: center;
+  display: flex;
+  order: 2;
+  height: 50px;
+  justify-content:center;
+  margin: 0 auto;
+  width: 100px;
+  &__image {
+    display: flex;
+    flex: 0 0 auto;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.menu {
+  display: none;
+  list-style: none;
+  &--show {
+    background-color: #222;
+    display: block;
+    left: 0;
+    padding: 0 1rem;
+    position: absolute;
+    top: 60px;
+    z-index: 1;
+    width: 100%;
+    .menu__item {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .menu__item + .menu__item {
+      border-top: 1px solid #000;
+    }
+  }
+  a.menu__link {
+    border-bottom: 1px solid transparent;
+    color: $link-color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    padding: 1rem 0;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 1s cubic-bezier(.06, .81, 0, .98);
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+    &--active {
+      border-bottom: 1px solid $border-color;
+      color: #fff;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  //margin-left: auto;
+  order: 3;
+  a.user__login {
+    color: $link-color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    margin: 0 .85em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 1s cubic-bezier(.06, .81, 0, .98);
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+@media (min-width: 544px) {
+  //.login {
+  //  width: auto;
+  //}
+}
+
+@media (min-width: 768px) {
+  .btn-menu-mobile {
+    display: none;
+  }
+  .logo {
+    order: 1;
+    margin: 0 1rem;
+  }
+  .user {
+    margin: 0 1rem 0 auto;
+  }
+  .menu {
+    display: flex;
+    flex: 0 0 auto;
+    order: 2;
+    height: 100%;
+    list-style: none;
+    margin: 0 0 0 1rem;
+    padding: 0;
+    &__item {
+      align-items: center;
+      display: flex;
+      height: 100%;
+    }
+    a.menu__link {
+      margin: 0 .85em;
+      padding: 22px 0;
+    }
+  }
+}
+

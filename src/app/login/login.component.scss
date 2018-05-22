@@ -1,0 +1,32 @@
+@import "src/scss/variables";
+
+:host {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.login {
+  background-color: $bg-color;
+  border: 1px solid rgba($border-color, .4);
+  margin-top: 3rem;
+  padding: 1rem;
+  width: 100%;
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+  }
+  a.login__forgotten {
+    color: $title-color;
+    font-size: 11px;
+  }
+  .form-group {
+    margin-bottom: .5rem;
+  }
+  &__new-account {
+    border-top: 2px solid #000;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+}
