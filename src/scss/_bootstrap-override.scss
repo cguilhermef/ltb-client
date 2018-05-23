@@ -1,3 +1,14 @@
-.form-control {
+@import "variables";
+
+.form-control,
+.form-control:focus {
+  background-color: $bg-color;
   border-radius: 0;
+  border-color: $border-color;
+  color: #f0e6d2;
+  outline: none;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 2px 0 $border-color;
 }

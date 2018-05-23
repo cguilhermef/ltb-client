@@ -1,253 +1,273 @@
- <h3 class="mt-5 mb-3">Vagas anunciadas
-  <a
-    (click)="toggleFilters()"
-    class="button button--primary ml-5">Filtrar</a>
-</h3>
-<form
-  *ngIf="showFilters"
-  class="row f filters">
-  <div class="col-3 filters__item">
-    <label class="f-label">Equipe</label>
-    <input class="f-control" placeholder="Digite para buscar">
+<div class="content">
+  <div class="content__header">
+    <h3 class="content__title">Vagas anunciadas</h3>
+    <a
+      (click)="toggleFilters()"
+      class="button button--primary">Filtrar</a>
   </div>
-  <div class="col filters__item">
-    <span class="f-label">Posição</span>
-    <select class="f-control">
-      <option value="">Selecione</option>
-      <option value="adc">Atirador</option>
-      <option value="jg">Caçador</option>
-      <option value="mid">Meio</option>
-      <option value="sup">Suporte</option>
-      <option value="top">Topo</option>
-    </select>
-  </div>
-  <div class="col filters__item">
-    <span class="f-label">Tier mínimo</span>
-    <select class="f-control">
-      <option value="">Selecione</option>
-      <option value="1">Bronze</option>
-      <option value="2">Prata</option>
-      <option value="3">Ouro</option>
-      <option value="4">Platina</option>
-      <option value="5">Diamante</option>
-      <option value="6">Mestre</option>
-      <option value="7">Desafiante</option>
-    </select>
-  </div>
-  <div class="col filters__item">
-    <span class="f-label">Tier máximo</span>
-    <select class="f-control">
-      <option value="">Selecione</option>
-      <option value="1">Bronze</option>
-      <option value="2">Prata</option>
-      <option value="3">Ouro</option>
-      <option value="4">Platina</option>
-      <option value="5">Diamante</option>
-      <option value="6">Mestre</option>
-      <option value="7">Desafiante</option>
-    </select>
-  </div>
-  <div class="col col-auto">
-    <a href="" class="button d-inline-flex">Limpar</a>
-  </div>
-</form>
-<table class="advertisements-list">
-  <thead>
-  <tr>
-    <th>Posição</th>
-    <th>Tier min. <span class="fa fa-sort"></span></th>
-    <th>Tier max. <span class="fa fa-sort"></span></th>
-    <th>Equipe <span class="fa fa-sort"></span></th>
-    <th>Membros</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr class="advertisement">
-    <td>
-      <img src="assets/images/top-icon.png" class="advertisement__icon" alt="">
-    </td>
-    <td class="advertisement__tier-limits">
-      Platina III
-    </td>
-    <td class="advertisement__tier-limits">
-      Diamante V
-    </td>
-    <td class="advertisement__team">TPB - Tibbers, porrada e bomba</td>
-    <td>
-      <div class="members">
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="SomaKruz"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/664.png" alt="">
+  <form
+    *ngIf="showFilters"
+    class="row f filters">
+    <div class="col-3 filters__item">
+      <label class="f-label">Equipe</label>
+      <input class="f-control" placeholder="Digite para buscar">
+    </div>
+    <div class="col filters__item">
+      <span for="region" class="f-label">Região</span>
+      <select class="f-control" id="region">
+        <option value="BR1">Brasil</option>
+        <option value="EUN1">EU Nordic &amp; East</option>
+        <option value="EUW1">EU West</option>
+        <option value="JP1">Japan</option>
+        <option value="KR">Korea</option>
+        <option value="LA1">Latin America North</option>
+        <option value="LA2">Latin America South</option>
+        <option value="NA1">North America</option>
+        <option value="OC1">Oceania</option>
+        <option value="PBE1">Public Beta</option>
+        <option value="RU">Russia</option>
+        <option value="TR1">Turkey</option>
+      </select>
+    </div>
+    <div class="col filters__item">
+      <span class="f-label">Posição</span>
+      <select class="f-control">
+        <option value="">Selecione</option>
+        <option value="adc">Atirador</option>
+        <option value="jg">Caçador</option>
+        <option value="mid">Meio</option>
+        <option value="sup">Suporte</option>
+        <option value="top">Topo</option>
+      </select>
+    </div>
+    <div class="col filters__item">
+      <span class="f-label">Tier mínimo</span>
+      <select class="f-control">
+        <option value="">Selecione</option>
+        <option value="1">Bronze</option>
+        <option value="2">Prata</option>
+        <option value="3">Ouro</option>
+        <option value="4">Platina</option>
+        <option value="5">Diamante</option>
+        <option value="6">Mestre</option>
+        <option value="7">Desafiante</option>
+      </select>
+    </div>
+    <div class="col filters__item">
+      <span class="f-label">Tier máximo</span>
+      <select class="f-control">
+        <option value="">Selecione</option>
+        <option value="1">Bronze</option>
+        <option value="2">Prata</option>
+        <option value="3">Ouro</option>
+        <option value="4">Platina</option>
+        <option value="5">Diamante</option>
+        <option value="6">Mestre</option>
+        <option value="7">Desafiante</option>
+      </select>
+    </div>
+    <div class="col col-auto">
+      <a href="" class="button d-inline-flex">Limpar</a>
+    </div>
+  </form>
+  <table class="advertisements-list">
+    <thead>
+    <tr>
+      <th>Posição</th>
+      <th>Tier min. <span class="fa fa-sort"></span></th>
+      <th>Tier max. <span class="fa fa-sort"></span></th>
+      <th>Equipe <span class="fa fa-sort"></span></th>
+      <th>Membros</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="advertisement">
+      <td>
+        <img src="assets/images/top-icon.png" class="advertisement__icon" alt="">
+      </td>
+      <td class="advertisement__tier-limits">
+        Platina III
+      </td>
+      <td class="advertisement__tier-limits">
+        Diamante V
+      </td>
+      <td class="advertisement__team">TPB - Tibbers, porrada e bomba</td>
+      <td>
+        <div class="members">
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="SomaKruz"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/664.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="lukahenry"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/781.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="PHGamerazer"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/786.png" alt="">
+          </div>
+          +8
         </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="lukahenry"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/781.png" alt="">
+      </td>
+      <td>
+        <a href="" class="button button--primary">Candidatar-se</a>
+      </td>
+    </tr>
+    <tr class="advertisement">
+      <td>
+        <img src="assets/images/mid-icon.png" class="advertisement__icon"  alt="">
+      </td>
+      <td class="advertisement__tier-limits">
+        Mestre
+      </td>
+      <td class="advertisement__tier-limits">
+        Desafiante
+      </td>
+      <td class="advertisement__team">HYP - Harry Poke</td>
+      <td>
+        <div class="members">
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="SomaKruz"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/839.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="lukahenry"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/774.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="PHGamerazer"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/770.png" alt="">
+          </div>
         </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="PHGamerazer"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/786.png" alt="">
+      </td>
+      <td>
+        <a href="" class="button button--primary">Candidatar-se</a>
+      </td>
+    </tr>
+    <tr class="advertisement">
+      <td>
+        <img src="assets/images/bot-icon.png" class="advertisement__icon"  alt="">
+      </td>
+      <td class="advertisement__tier-limits">
+        Prata V
+      </td>
+      <td class="advertisement__tier-limits">
+        Platina V
+      </td>
+      <td class="advertisement__team">CNM - Cazuza Não Morreu</td>
+      <td>
+        <div class="members">
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="SomaKruz"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/907.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="lukahenry"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/903.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="PHGamerazer"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/940.png" alt="">
+          </div>
         </div>
-        +8
-      </div>
-    </td>
-    <td>
-      <a href="" class="button button--primary">Candidatar-se</a>
-    </td>
-  </tr>
-  <tr class="advertisement">
-    <td>
-      <img src="assets/images/mid-icon.png" class="advertisement__icon"  alt="">
-    </td>
-    <td class="advertisement__tier-limits">
-      Mestre
-    </td>
-    <td class="advertisement__tier-limits">
-      Desafiante
-    </td>
-    <td class="advertisement__team">HYP - Harry Poke</td>
-    <td>
-      <div class="members">
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="SomaKruz"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/839.png" alt="">
+      </td>
+      <td>
+        <a href="" class="button button--primary">Candidatar-se</a>
+      </td>
+    </tr>
+    <tr class="advertisement">
+      <td>
+        <img src="assets/images/jungle-icon.png" class="advertisement__icon"  alt="">
+      </td>
+      <td class="advertisement__tier-limits">
+        Bronze V
+      </td>
+      <td class="advertisement__tier-limits">
+        Ouro I
+      </td>
+      <td class="advertisement__team">YOP - Yasuo Open</td>
+      <td>
+        <div class="members">
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="SomaKruz"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/989.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="lukahenry"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/948.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="PHGamerazer"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/985.png" alt="">
+          </div>
         </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="lukahenry"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/774.png" alt="">
+      </td>
+      <td>
+        <a href="" class="button button--primary">Candidatar-se</a>
+      </td>
+    </tr>
+    <tr class="advertisement">
+      <td>
+        <img src="assets/images/support-icon.png" class="advertisement__icon"  alt="">
+      </td>
+      <td class="advertisement__tier-limits">
+        Prata V
+      </td>
+      <td class="advertisement__tier-limits">
+        Ouro I
+      </td>
+      <td class="advertisement__team">T97 - Lais de Guia</td>
+      <td>
+        <div class="members">
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="SomaKruz"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/989.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="lukahenry"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/948.png" alt="">
+          </div>
+          <div class="members__icon">
+            <img
+              class="members__img"
+              title="PHGamerazer"
+              src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/985.png" alt="">
+          </div>
         </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="PHGamerazer"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/770.png" alt="">
-        </div>
-      </div>
-    </td>
-    <td>
-      <a href="" class="button button--primary">Candidatar-se</a>
-    </td>
-  </tr>
-  <tr class="advertisement">
-    <td>
-      <img src="assets/images/bot-icon.png" class="advertisement__icon"  alt="">
-    </td>
-    <td class="advertisement__tier-limits">
-      Prata V
-    </td>
-    <td class="advertisement__tier-limits">
-      Platina V
-    </td>
-    <td class="advertisement__team">CNM - Cazuza Não Morreu</td>
-    <td>
-      <div class="members">
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="SomaKruz"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/907.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="lukahenry"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/903.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="PHGamerazer"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/940.png" alt="">
-        </div>
-      </div>
-    </td>
-    <td>
-      <a href="" class="button button--primary">Candidatar-se</a>
-    </td>
-  </tr>
-  <tr class="advertisement">
-    <td>
-      <img src="assets/images/jungle-icon.png" class="advertisement__icon"  alt="">
-    </td>
-    <td class="advertisement__tier-limits">
-      Bronze V
-    </td>
-    <td class="advertisement__tier-limits">
-      Ouro I
-    </td>
-    <td class="advertisement__team">YOP - Yasuo Open</td>
-    <td>
-      <div class="members">
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="SomaKruz"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/989.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="lukahenry"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/948.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="PHGamerazer"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/985.png" alt="">
-        </div>
-      </div>
-    </td>
-    <td>
-      <a href="" class="button button--primary">Candidatar-se</a>
-    </td>
-  </tr>
-  <tr class="advertisement">
-    <td>
-      <img src="assets/images/support-icon.png" class="advertisement__icon"  alt="">
-    </td>
-    <td class="advertisement__tier-limits">
-      Prata V
-    </td>
-    <td class="advertisement__tier-limits">
-      Ouro I
-    </td>
-    <td class="advertisement__team">T97 - Lais de Guia</td>
-    <td>
-      <div class="members">
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="SomaKruz"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/989.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="lukahenry"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/948.png" alt="">
-        </div>
-        <div class="members__icon">
-          <img
-            class="members__img"
-            title="PHGamerazer"
-            src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/985.png" alt="">
-        </div>
-      </div>
-    </td>
-    <td>
-      <a href="" class="button button--primary">Candidatar-se</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+      </td>
+      <td>
+        <a href="" class="button button--primary">Candidatar-se</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

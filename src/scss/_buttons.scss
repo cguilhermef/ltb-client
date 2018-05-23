@@ -55,8 +55,8 @@
 
 .button {
   background-color: #2C3339;
-  border: 1px solid #e0c481;
-  color: #e0c481;
+  border: 1px solid lighten(#2C3339, 5%);
+  color: #deca9b;
   cursor: pointer;
   font-size: 12px;
   height: 32px;
@@ -64,10 +64,10 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: box-shadow .4s linear;
+  transition: box-shadow .2s linear;
   &:focus,
   &:hover {
-    box-shadow: 0 0 0 1px #e0c481;
+    background-color: rgba(#2C3339, .9);
     outline: none;
   }
   &:hover {
@@ -75,6 +75,11 @@
     text-decoration: none;
   }
   &--primary {
+    border: 1px solid lighten(#724c1c, 5%);
     background-color: #724c1c;
+    &:focus,
+    &:hover {
+      background-color: rgba(#724c1c, .9);
+    }
   }
 }

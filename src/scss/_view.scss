@@ -22,10 +22,51 @@
     overflow: hidden;
     overflow-y: scroll;
   }
+  &__title {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
   &__footer {
     display: none;
   }
 }
+
+.content {
+  background-color: rgba($bg-color, .9);
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 auto;
+  margin-top: 60px;
+  padding: 1rem 1rem 2rem;
+  width: 100%;
+  &__header {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+  }
+  &__title {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 544px) {
+  .content {
+    &__header {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+    &__title {
+      width: auto;
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .view {
     &__footer {
@@ -39,4 +80,5 @@
       justify-content: center;
     }
   }
+
 }
