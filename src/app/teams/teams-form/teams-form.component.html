@@ -1,0 +1,113 @@
+<form class="container-fluid px-0">
+  <div class="row">
+    <div class="col-12 col-md-2">
+      <div class="form-group required">
+        <label for="abbr">Sigla</label>
+        <input type="text" id="abbr" class="form-control">
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group required">
+        <label for="name">Nome</label>
+        <input type="text" id="name" class="form-control">
+      </div>
+    </div>
+  </div>
+  <h5 class="mt-4">Modos de jogo</h5>
+  <div class="row">
+    <div class="col-12 col-md">
+      <strong>Summoner's Rift</strong>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="summoner-1">
+        <label class="form-check-label" for="summoner-1">
+          Escolha às cegas
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="summoner-2">
+        <label class="form-check-label" for="summoner-2">
+          Escolha alternada
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="summoner-3">
+        <label class="form-check-label" for="summoner-3">
+          Ranqueada solo/duo
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="summoner-4">
+        <label class="form-check-label" for="summoner-4">
+          Ranqueada flexível
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-md mt-3 mt-md-0">
+      <strong>Twisted Treeline</strong>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="tt-normal">
+        <label class="form-check-label" for="tt-normal">
+          Escolha às cegas
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="tt-ranked">
+        <label class="form-check-label" for="tt-ranked">
+          Ranqueada
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-md mt-3 mt-md-0">
+      <strong>Outros</strong>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="clash">
+        <label class="form-check-label" for="clash">Clash</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="aram">
+        <label class="form-check-label" for="aram">ARAM</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="rotatives">
+        <label class="form-check-label" for="rotatives">Modos rotativos</label>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label for="tier-min">Tier mínimo</label>
+        <select id="tier-min" class="form-control">
+          <option value="">Selecione</option>
+          <option value="1">Bronze</option>
+          <option value="2">Prata</option>
+          <option value="3">Ouro</option>
+          <option value="4">Platina</option>
+          <option value="5">Diamante</option>
+          <option value="6">Mestre</option>
+          <option value="7">Desafiante</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="form-group">
+        <label for="tier-max">Tier máximo</label>
+        <select id="tier-max" class="form-control">
+          <option value="">Selecione</option>
+          <option value="1">Bronze</option>
+          <option value="2">Prata</option>
+          <option value="3">Ouro</option>
+          <option value="4">Platina</option>
+          <option value="5">Diamante</option>
+          <option value="6">Mestre</option>
+          <option value="7">Desafiante</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-md-end">
+    <div class="col-12 col-md-2">
+      <button class="button button--primary btn-block btn-md-">Criar</button>
+    </div>
+  </div>
+</form>

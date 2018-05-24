@@ -1,7 +1,7 @@
 <div class="content">
   <div class="content__header">
     <h3 class="content__title">Suas equipes</h3>
-    <a href="/teams/new" class="button button--primary">Criar equipe</a>
+    <a routerLink="new" class="button button--primary">Criar equipe</a>
   </div>
   <div class="content__body">
     <table class="table-list">
@@ -17,7 +17,9 @@
           <span class="team__abbr">TPB</span>Tibbers, porrada e bomba
         </td>
         <td class="table-list__actions">
-          <button class="button button--primary">Gerenciar</button>
+          <button
+            routerLink="/teams/1"
+            class="button button--primary">Gerenciar</button>
         </td>
       </tr>
       <tr>
@@ -25,7 +27,9 @@
           <span class="team__abbr">HYP</span>Harry Poke
         </td>
         <td class="table-list__actions">
-          <button class="button button--primary">Gerenciar</button>
+          <button
+            routerLink="/teams/3"
+            class="button button--primary">Gerenciar</button>
         </td>
       </tr>
       <tr>
@@ -33,7 +37,9 @@
           <span class="team__abbr">ADD</span>Armada Dumbledore
         </td>
         <td class="table-list__actions">
-          <button class="button button--primary">Gerenciar</button>
+          <button
+            routerLink="/teams/2"
+            class="button button--primary">Gerenciar</button>
         </td>
       </tr>
       </tbody>

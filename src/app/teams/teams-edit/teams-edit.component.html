@@ -1,115 +1,47 @@
 <div class="content">
   <div class="content__header">
-    <h3 class="content__title">Nova equipe</h3>
+    <h3
+      *ngIf="editing"
+      class="content__title">Nome da equipe aqui</h3>
+    <h3
+      *ngIf="!editing"
+      class="content__title">Nova equipe</h3>
     <a href="/teams" class="button">Voltar</a>
   </div>
   <div class="content__body">
-    <form class="container-fluid px-0">
-      <div class="row">
-        <div class="col-2">
-          <div class="form-group required">
-            <label for="abbr">Sigla</label>
-            <input type="text" id="abbr" class="form-control">
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="form-group required">
-            <label for="name">Nome</label>
-            <input type="text" id="name" class="form-control">
-          </div>
-        </div>
-      </div>
-      <h5 class="mt-4">Modos de jogo</h5>
-      <div class="row">
-        <div class="col">
-          <strong>Summoner's Rift</strong>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="summoner-normal">
-            <label class="form-check-label" for="summoner-normal">
-              Normal às cegas
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="summoner-flex">
-            <label class="form-check-label" for="summoner-flex">
-              Flex
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="summoner-ranked">
-            <label class="form-check-label" for="summoner-ranked">
-              Ranked
-            </label>
-          </div>
-        </div>
-        <div class="col">
-          <strong>Twisted Treeline</strong>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="tt-normal">
-            <label class="form-check-label" for="tt-normal">
-              Normal
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="tt-ranked">
-            <label class="form-check-label" for="tt-ranked">
-              Ranked
-            </label>
-          </div>
-        </div>
-        <div class="col">
-          <strong>Outros</strong>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="clash">
-            <label class="form-check-label" for="clash">Clash</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="aram">
-            <label class="form-check-label" for="aram">ARAM</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="rotatives">
-            <label class="form-check-label" for="rotatives">Rotativos</label>
+    <ng-container *ngIf="editing">
+      <div class="container-fluid px-0">
+        <div class="row">
+          <div class="col">
+            <ul class="tabs">
+              <li class="tabs__item">
+                <a
+                  routerLinkActive="tabs__link--active"
+                  routerLink="details" class="tabs__link">Dados</a>
+              </li>
+              <li class="tabs__item">
+                <a
+                  routerLinkActive="tabs__link--active"
+                  routerLink="members"
+                  class="tabs__link">Membros</a>
+              </li>
+              <li class="tabs__item">
+                <a
+                  routerLinkActive="tabs__link--active"
+                  routerLink="candidates"
+                  class="tabs__link">Candidatos</a>
+              </li>
+              <li class="tabs__item">
+                <a
+                  routerLinkActive="tabs__link--active"
+                  routerLink="vacancies"
+                  class="tabs__link">Vagas</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col-4">
-          <div class="form-group">
-            <label for="tier-min">Tier mínimo</label>
-            <select id="tier-min" class="form-control">
-              <option value="">Selecione</option>
-              <option value="1">Bronze</option>
-              <option value="2">Prata</option>
-              <option value="3">Ouro</option>
-              <option value="4">Platina</option>
-              <option value="5">Diamante</option>
-              <option value="6">Mestre</option>
-              <option value="7">Desafiante</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <label for="tier-max">Tier máximo</label>
-            <select id="tier-max" class="form-control">
-              <option value="">Selecione</option>
-              <option value="1">Bronze</option>
-              <option value="2">Prata</option>
-              <option value="3">Ouro</option>
-              <option value="4">Platina</option>
-              <option value="5">Diamante</option>
-              <option value="6">Mestre</option>
-              <option value="7">Desafiante</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-md-end">
-        <div class="col-12 col-md-auto">
-          <button class="account__btn button button--primary">Criar</button>
-        </div>
-      </div>
-    </form>
+    </ng-container>
+    <router-outlet></router-outlet>
   </div>
 </div>

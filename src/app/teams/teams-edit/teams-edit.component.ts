@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ltb-teams-edit',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsEditComponent implements OnInit {
 
-  constructor() { }
+  editing: boolean;
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.params
+      .subscribe( p => {
+        this.editing = p.hasOwnProperty('id');
+      });
   }
 
 }

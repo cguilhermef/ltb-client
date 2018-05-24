@@ -82,4 +82,12 @@
       background-color: rgba(#724c1c, .9);
     }
   }
+  &--warning {
+    border: 1px solid lighten(#982a0b, 5%);
+    background-color: #982a0b;
+    &:focus,
+    &:hover {
+      background-color: rgba(#982a0b, .9);
+    }
+  }
 }
