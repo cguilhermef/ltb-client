@@ -7,33 +7,9 @@
 }
 
 .advertisements-list {
-  border-collapse: separate;
-  border-spacing: 0 5px;
-  width: 100%;
   thead {
-    color: $title-color;
-    th {
-      padding-bottom: .5rem;
-    }
     th:first-child {
       width: 80px;
-    }
-  }
-  tbody {
-    tr {
-      background-color: #202326;
-      border: 1px solid #2f3639;
-      transition: background-color 0.2s linear;
-      &:hover {
-        background-color: lighten(#202326, 5%);
-      }
-    }
-    td {
-      padding: .5rem;
-      vertical-align: middle;
-    }
-    td:last-child {
-      text-align: right;
     }
   }
   .advertisement {

@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeamsListComponent } from '@app/teams/teams-list';
+import { TeamsEditComponent } from './teams-edit';
+import { TeamsListComponent } from './teams-list';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     component: TeamsListComponent
+  },
+  {
+    path: 'new',
+    component: TeamsEditComponent
   }
 ];
 
