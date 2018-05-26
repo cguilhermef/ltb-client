@@ -51,6 +51,10 @@
       border-top: 1px solid #000;
     }
   }
+  &--user {
+    left: auto;
+    right: 0;
+  }
   a.menu__link {
     border-bottom: 1px solid transparent;
     color: $link-color;
@@ -61,8 +65,10 @@
     line-height: 14px;
     padding: 1rem 0;
     overflow: hidden;
+    text-align: center;
     text-transform: uppercase;
     transition: color 1s cubic-bezier(.06, .81, 0, .98);
+    width: 100%;
     &:hover {
       color: $link-hover-color;
       text-decoration: none;
@@ -75,8 +81,11 @@
 }
 
 .user {
+  align-items: center;
+  cursor: pointer;
   display: flex;
-  //margin-left: auto;
+  flex-flow: row;
+  flex: 0 0 auto;
   order: 3;
   a.user__login {
     color: $link-color;
@@ -93,6 +102,19 @@
       color: $link-hover-color;
       text-decoration: none;
     }
+  }
+  &__icon {
+    border: 2px solid #c9aa71;
+    border-radius: 50%;
+    display: block;
+    height: 40px;
+    margin-right: 1rem;
+    width: 40px;
+  }
+  &__name {
+    color: #f0e6d2;
+    font-weight: 700;
+    display: none;
   }
 }
 
@@ -114,6 +136,13 @@
   }
   .user {
     margin: 0 1rem 0 auto;
+    &__icon {
+      margin-right: 0;
+    }
+    &__name {
+      display: inline-flex;
+      padding-left: 1rem;
+    }
   }
   .menu {
     display: flex;
@@ -131,6 +160,18 @@
     a.menu__link {
       margin: 0 .85em;
       padding: 22px 0;
+    }
+    &--user {
+      display: none;
+      height: auto;
+      position: absolute;
+      right: 0;
+      top: 60px;
+      width: 200px;
+      &.menu--show {
+        display: flex;
+        flex-flow: column;
+      }
     }
   }
 }

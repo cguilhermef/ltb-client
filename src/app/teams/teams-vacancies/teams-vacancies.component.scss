@@ -1,0 +1,11 @@
+@import "src/scss/variables";
+
+.member {
+  td:first-child {
+    width: 40px;
+  }
+  &__position {
+    height: auto;
+    width: 40px;
+  }
+}
