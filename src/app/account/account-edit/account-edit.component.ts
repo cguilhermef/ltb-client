@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationPosition, NotificationType, NotifyService } from '@core/notify';
 import { AccountService, AuthService, UserService } from '@core/services';
 
 @Component({
@@ -15,23 +16,32 @@ export class AccountEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private userService: UserService,
+    private notify: NotifyService,
     private router: Router,
-    private service: AccountService
+    private service: AccountService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.setupForm();
+    // this.notify.create({
+    //   position: NotificationPosition.topRight,
+    //   showClose: true,
+    //   timeout: 0,
+    //   title: 'Verifique os dados informados!',
+    //   type: NotificationType.error
+    // });
   }
 
   save() {
+    this.form.markAsTouched();
     if (!this.form.valid) {
-      console.log('hup?');
+      this.notify.warning('Verifique os dados informados!', 0);
       return;
     }
-    const user = this.form.value;
+    const user = JSON.parse(JSON.stringify(this.form.value));
     if (user.password !== user.confirm) {
-      console.log('password != confirm');
+      this.notify.warning('As senhas não conferem!');
       return;
     }
     delete user.confirm;
@@ -51,8 +61,20 @@ export class AccountEditComponent implements OnInit {
       'email': this.fb.control('', [ Validators.email, Validators.required ]),
       'region_id': this.fb.control('', Validators.required),
       'password': this.fb.control('', Validators.required),
-      'confirm': this.fb.control('', Validators.required)
+      'confirm': this.fb.control('', [Validators.required, this.validatePassword])
     });
+  }
+
+  private validatePassword(control: AbstractControl) {
+    const form = control.root;
+    console.log(form);
+    if (!form.get('password')) {
+      return null;
+    }
+    if (control.value !== form.get('password').value) {
+      return { passwordsMismatch: true };
+    }
+    return null;
   }
 
 }

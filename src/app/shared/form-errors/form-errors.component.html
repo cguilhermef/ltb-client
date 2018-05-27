@@ -1,0 +1,21 @@
+<div class="form-errors" *ngIf="hasErrors">
+  <div class="form-errors__item" *ngIf="errors.required">Campo obrigatório.</div>
+  <div class="form-errors__item" *ngIf="errors.minlength">
+    Este campo exige no mínimo {{ errors.minlength['requiredLength']}} caracteres.
+  </div>
+  <div class="form-errors__item" *ngIf="errors.passwordsMismatch">As senhas devem ser iguais.</div>
+  <div class="form-errors__item" *ngIf="errors.backend">{{ errors.backend }}</div>
+  <div class="form-errors__item" *ngIf="errors.equalTo">{{ errors.equalTo }}</div>
+  <div class="form-errors__item" *ngIf="errors.numbersOnly">Insira somente números</div>
+  <div class="form-errors__item" *ngIf="errors.maxValue">O valor máximo permitido é de {{errors.maxValue['value']}} </div>
+  <div class="form-errors__item" *ngIf="errors.minValue">O valor mínimo permitido é de {{errors.minValue['value']}} </div>
+  <div class="form-errors__item" *ngIf="errors.range">
+    Insira um numero entre {{errors.range['min']}} e {{errors.range['max']}}
+  </div>
+  <div class="form-errors__item" *ngIf="errors.endDateCompare">
+    A data final deve ser maior que a data inicial
+  </div>
+  <div class="form-errors__item" *ngIf="errors.endTimeCompare">
+    A hora final deve ser maior que a hora inicial
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="notify-top">
+  <div class="notify-left">
+    <ng-container *ngFor="let notification of notifications | position: 'top-left'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+  <div class="notify-center">
+    <ng-container *ngFor="let notification of notifications | position: 'top-center'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+  <div class="notify-right">
+    <ng-container *ngFor="let notification of notifications | position: 'top-right'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+</div>
+<div class="notify-bottom">
+  <div class="notify-left">
+    <ng-container *ngFor="let notification of notifications | position: 'bottom-left'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+  <div class="notify-center">
+    <ng-container *ngFor="let notification of notifications | position: 'bottom-center'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+  <div class="notify-right">
+    <ng-container *ngFor="let notification of notifications | position: 'bottom-right'">
+      <ltb-notification [notification]="notification"></ltb-notification>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+$block: notify;
+
+:host {
+  display: flex;
+  flex-flow: column;
+  height: 0;
+  justify-content: space-between;
+  position: fixed;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 12;
+}
+
+.#{$block}-bottom,
+.#{$block}-top {
+  display: flex;
+  flex-flow: row;
+  height: 0;
+  justify-content: space-between;
+  left: 0;
+  overflow: visible;
+  padding: 0 1rem;
+  position: fixed;
+  width: 100%;
+}
+
+.#{$block}-bottom {
+  bottom: 1rem;
+}
+
+.#{$block}-top {
+  top: 77px;
+}
+
+.#{$block} {
+  &-center,
+  &-left,
+  &-right {
+    display: flex;
+    flex-flow: column;
+    height: 0;
+    overflow: visible;
+    width: 33.33333%;
+    .#{$block}-bottom & {
+      flex-flow: column-reverse;
+    }
+  }
+  &-center {
+    align-items: center;
+  }
+  &-left {
+    align-items: flex-start;
+  }
+  &-right {
+    align-items: flex-end;
+    margin-right: 1rem;
+  }
+}

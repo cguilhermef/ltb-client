@@ -10,6 +10,7 @@
           <input
             formControlName="nickname"
             type="text" id="nickname" class="form-control">
+          <ltb-form-errors [form]="form" controlName="nickname"></ltb-form-errors>
         </div>
       </div>
       <div class="col-12 col-md-6">
@@ -57,6 +58,7 @@
             formControlName="confirm"
             type="password" id="confirm" class="form-control">
         </div>
+        <ltb-form-errors [form]="form" controlName="confirm"></ltb-form-errors>
       </div>
     </div>
     <div class="row justify-content-md-end">

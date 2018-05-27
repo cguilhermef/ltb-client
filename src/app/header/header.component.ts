@@ -47,6 +47,10 @@ export class HeaderComponent implements OnInit {
     return this.user ? this.user.nickname : null;
   }
 
+  // get iconId(): number {
+  //   return this.user ? this.user.icon
+  // }
+
   hideMenuMobile() {
     this.showMenuMobile = false;
   }

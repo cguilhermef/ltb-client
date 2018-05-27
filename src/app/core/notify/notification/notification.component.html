@@ -1,0 +1,18 @@
+<div
+  [class.notification--show-close]="notification.showClose"
+  [class.notification--error]="notification.type === notificationType.error"
+  [class.notification--info]="notification.type === notificationType.info"
+  [class.notification--success]="notification.type === notificationType.success"
+  [class.notification--warning]="notification.type === notificationType.warning"
+  ngClass="notification--{{ notification.position }}"
+  class="notification notification--show-close">
+  <div class="notification__content">
+    <span class="notification__icon"></span>
+    <span class="notification__title">{{ notification.title }}</span>
+  </div>
+  <ng-container *ngIf="notification.showClose">
+    <!--<span (click)="notification.remove()" class="notification__btn-close">-->
+      <!--<span class="fas fa-times"></span>-->
+    <!--</span>-->
+  </ng-container>
+</div>

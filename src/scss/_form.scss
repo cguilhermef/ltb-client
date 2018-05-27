@@ -4,3 +4,29 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: $bg-color !important;
   color: #f0e6d2 !important;
 }
+
+form.ng-touched {
+  .ng-invalid {
+    box-shadow: 0 0 6px 0 red inset;
+  }
+}
+
+.form-errors {
+  background-color: $bg-error;
+  color: #fff;
+  font-size: 12px;
+  padding: .2rem;
+  position: relative;
+  margin-top: 5px;
+  z-index: 2;
+  &::before {
+    background-color: $bg-error;
+    content: '';
+    height: 7px;
+    left: 1rem;
+    position: absolute;
+    top: -3px;
+    transform: rotate(-45deg);
+    width: 7px;
+  }
+}
