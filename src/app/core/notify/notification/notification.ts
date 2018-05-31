@@ -15,6 +15,7 @@ export enum NotificationType {
   info,
   error,
   success,
+  processing,
   warning
 }
 
@@ -167,7 +168,7 @@ export class NotificationWaiting extends Notification {
     super(service, {
       position: NotificationPosition.topCenter,
       title: title,
-      type: NotificationType.info,
+      type: NotificationType.processing,
       timeout: 0,
       showClose: false
     });

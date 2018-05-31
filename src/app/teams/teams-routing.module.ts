@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TeamsFormComponent } from '@app/teams/teams-form';
-import { TeamsVacanciesComponent } from '@app/teams/teams-vacancies';
+import { MapsResolverService } from '@core/resolvers/maps-resolver.service';
+import { TeamsFormComponent } from './teams-form';
+import { TeamsVacanciesComponent } from './teams-vacancies';
+import { AuthGuard } from '@core/guards';
+import { TiersResolverService } from '@core/resolvers';
 import { TeamsCandidatesComponent } from './teams-candidates';
 import { TeamsMembersComponent } from './teams-members';
 import { TeamsEditComponent } from './teams-edit';
@@ -16,11 +19,16 @@ const routes: Routes = [
   {
     path: 'new',
     component: TeamsEditComponent,
+    canActivate: [ AuthGuard ],
     children: [
       {
         path: '',
         pathMatch: 'full',
-        component: TeamsFormComponent
+        component: TeamsFormComponent,
+        resolve: {
+          maps: MapsResolverService,
+          tiers: TiersResolverService
+        }
       }
     ]
   },
@@ -54,8 +62,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes)],
+  imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
-export class TeamsRoutingModule{
+export class TeamsRoutingModule {
 }

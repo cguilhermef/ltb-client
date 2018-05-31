@@ -16,7 +16,6 @@ export class NotifyInterceptorService implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     const reqClone = req.clone();
     const loading = this.notify(req);
     return next.handle(reqClone)
@@ -37,32 +36,37 @@ export class NotifyInterceptorService implements HttpInterceptor {
 
   notify(req: HttpRequest<any>): Notification {
     let title: string;
-    switch ( req.method ) {
-      case 'DELETE': {
-        title = 'Excluindo...';
-        break;
-      }
-      case 'PUT':
-      case 'PATCH': {
-        title = 'Atualizando...';
-        break;
-      }
-      case 'POST': {
-        title = 'Criando...';
-        break;
-      }
-      default: {
-        title = 'Carregando...';
+    const isLoginRequest = req.url.search('login') >= 0;
+    if (isLoginRequest) {
+      title = 'Autenticando...';
+    } else {
+
+      switch ( req.method ) {
+        case 'DELETE': {
+          title = 'Excluindo...';
+          break;
+        }
+        case 'PUT':
+        case 'PATCH': {
+          title = 'Atualizando...';
+          break;
+        }
+        case 'POST': {
+          title = 'Criando...';
+          break;
+        }
+        default: {
+          title = 'Carregando...';
+        }
       }
     }
-
     return this.notifyService.create({
       showClose: false,
       stackName: 'httpRequest',
       timeout: 0,
       title: title,
-      type: NotificationType.info,
-      position: NotificationPosition.topRight
+      type: NotificationType.processing,
+      position: NotificationPosition.topCenter
     });
   }
 

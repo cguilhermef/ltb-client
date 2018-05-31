@@ -1,8 +1,11 @@
 <div class="content account">
   <div class="content__header">
-    <h3 class="content__title">Nova conta</h3>
+    <h3 class="content__title" *ngIf="!editing">Nova conta</h3>
+    <h3 class="content__title" *ngIf="editing">Minha conta</h3>
   </div>
-  <form [formGroup]="form">
+  <form
+    [class.ng-submitted]="submitted"
+    [formGroup]="form">
     <div class="row">
       <div class="col-12 col-md-6">
         <div class="form-group required">
@@ -19,18 +22,22 @@
           <select
             formControlName="region_id"
             class="form-control" id="region">
-            <option value="1">Brasil</option>
-            <option value="2">EU Nordic &amp; East</option>
-            <option value="3">EU West</option>
-            <option value="4">Japan</option>
-            <option value="5">Korea</option>
-            <option value="6">Latin America North</option>
-            <option value="7">Latin America South</option>
-            <option value="8">North America</option>
-            <option value="9">Oceania</option>
-            <option value="10">Russia</option>
-            <option value="11">Turkey</option>
+            <option [ngValue]="null">Selecione</option>
+            <option [ngValue]="region.id" *ngFor="let region of regions">{{ region.name }}</option>
+            
+            <!--<option value="1">Brasil</option>-->
+            <!--<option value="2">EU Nordic &amp; East</option>-->
+            <!--<option value="3">EU West</option>-->
+            <!--<option value="4">Japan</option>-->
+            <!--<option value="5">Korea</option>-->
+            <!--<option value="6">Latin America North</option>-->
+            <!--<option value="7">Latin America South</option>-->
+            <!--<option value="8">North America</option>-->
+            <!--<option value="9">Oceania</option>-->
+            <!--<option value="10">Russia</option>-->
+            <!--<option value="11">Turkey</option>-->
           </select>
+          <ltb-form-errors [form]="form" controlName="region_id"></ltb-form-errors>
         </div>
       </div>
       <div class="col-12 col-md-6 mr-lg-auto">
@@ -39,6 +46,7 @@
           <input
             formControlName="email"
             type="text" id="email" class="form-control">
+          <ltb-form-errors [form]="form" controlName="email"></ltb-form-errors>
         </div>
       </div>
     </div>
@@ -49,6 +57,7 @@
           <input
             formControlName="password"
             type="password" id="password" class="form-control">
+          <ltb-form-errors [form]="form" controlName="password"></ltb-form-errors>
         </div>
       </div>
       <div class="col-12 col-md-6">
@@ -65,7 +74,10 @@
       <div class="col-12 col-md-auto">
         <button
           (click)="save()"
-          class="account__btn button button--primary">Criar conta</button>
+          class="account__btn button button--primary">
+          <ng-container *ngIf="editing">Salvar</ng-container>
+          <ng-container *ngIf="!editing">Criar conta</ng-container>
+        </button>
       </div>
     </div>
   </form>

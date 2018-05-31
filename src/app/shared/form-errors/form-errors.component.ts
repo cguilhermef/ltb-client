@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, NgForm, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'ltb-form-errors',
@@ -8,7 +8,7 @@ import { AbstractControl, FormGroup, NgForm, ValidationErrors } from '@angular/f
 })
 export class FormErrorsComponent implements OnInit {
 
-  @Input() form: FormGroup | NgForm;
+  @Input() form: FormGroup;
   @Input() controlName: string;
 
   constructor() { }

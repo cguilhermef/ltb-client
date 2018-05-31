@@ -1,7 +1,10 @@
 <div class="form-errors" *ngIf="hasErrors">
   <div class="form-errors__item" *ngIf="errors.required">Campo obrigatório.</div>
   <div class="form-errors__item" *ngIf="errors.minlength">
-    Este campo exige no mínimo {{ errors.minlength['requiredLength']}} caracteres.
+    Deve ter no mínimo {{ errors.minlength['requiredLength']}} caracteres.
+  </div>
+  <div class="form-errors__item" *ngIf="errors.maxlength">
+    Deve ter no máximo {{ errors.maxlength['requiredLength']}} caracteres.
   </div>
   <div class="form-errors__item" *ngIf="errors.passwordsMismatch">As senhas devem ser iguais.</div>
   <div class="form-errors__item" *ngIf="errors.backend">{{ errors.backend }}</div>

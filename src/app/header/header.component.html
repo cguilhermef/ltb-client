@@ -38,10 +38,10 @@
       (click)="toggleMenuUser()"
       class="user__icon"
       title="lukahenry"
-      src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/789.png" alt="">
-      <div
-        (click)="toggleMenuUser()"
-        class="user__name">{{ nickname }}</div>
+      [src]="profileIconUrl" alt="">
+    <div
+      (click)="toggleMenuUser()"
+      class="user__name">{{ nickname }}</div>
   </ng-container>
   <ul
     [class.menu--show]="showMenuUser"

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { endpoints } from '@core/endpoints';
-import { User } from '@core/models';
+import { Account, User } from '@core/models';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
-  loggedIn$: Subject<User> = new Subject<User>();
+  loggedIn$: Subject<Account> = new Subject<Account>();
   loggedOut$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -29,6 +29,10 @@ export class AuthService {
   }
 
   set token(token: string) {
+    if (!token) {
+      localStorage.removeItem('token');
+      return;
+    }
     localStorage.setItem('token', token);
   }
 
@@ -39,7 +43,7 @@ export class AuthService {
       .pipe(
         map(response => {
           this.token = response[ 'token' ];
-          this.loggedIn$.next(response[ 'user' ]);
+          this.loggedIn$.next(response[ 'data' ]);
           this.router.navigate([ '/' ]);
         })
       );

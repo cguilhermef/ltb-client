@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '@core/models';
+import { endpoints } from '@core/endpoints';
+import { Account, User } from '@core/models';
 import { AuthService, UserService } from '@core/services';
 
 @Component({
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   showMenuUser = false;
   showMenuMobile = false;
-  user: User;
+  account: Account;
   constructor(
     protected authService: AuthService,
     protected router: Router,
@@ -28,28 +29,32 @@ export class HeaderComponent implements OnInit {
       }
     });
     this.isLoggedIn = this.authService.authtenticated;
-    this.user = this.isLoggedIn ? this.userService.user : null;
+    this.account = this.isLoggedIn ? this.userService.account : null;
 
     this.authService.loggedIn$
-      .subscribe( user => {
+      .subscribe( account => {
         this.isLoggedIn = true;
-        this.user = user;
+        this.account = account;
       });
 
     this.authService.loggedOut$
       .subscribe( () => {
         this.isLoggedIn = false;
-        this.user = null;
+        this.account = null;
       });
   }
 
   get nickname(): string {
-    return this.user ? this.user.nickname : null;
+    return this.account ? this.account.user.nickname : null;
   }
 
-  // get iconId(): number {
-  //   return this.user ? this.user.icon
-  // }
+  get profileIconUrl(): string {
+    const iconId = this.account ? this.account.summoner.profile_icon_id : null;
+    if (!iconId) {
+      return null;
+    }
+    return endpoints.riot.profileIcons(iconId);
+  }
 
   hideMenuMobile() {
     this.showMenuMobile = false;

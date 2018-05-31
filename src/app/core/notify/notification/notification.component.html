@@ -7,7 +7,14 @@
   ngClass="notification--{{ notification.position }}"
   class="notification notification--show-close">
   <div class="notification__content">
-    <span class="notification__icon"></span>
+    <ng-container *ngIf="notification.type === notificationType.processing">
+      <div class="loading">
+        <span class="loading__bar"></span>
+        <span class="loading__bar"></span>
+        <span class="loading__bar"></span>
+      </div>
+    </ng-container>
+    <span class="notification__icon" *ngIf="notification.type !== notificationType.processing"></span>
     <span class="notification__title">{{ notification.title }}</span>
   </div>
   <ng-container *ngIf="notification.showClose">
