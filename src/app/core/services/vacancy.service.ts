@@ -14,6 +14,15 @@ export class VacancyService {
     public httpClient: HttpClient
   ) { }
 
+  destroy(teamId: number, vacancyId: number): Observable<void> {
+    return this.httpClient
+      .delete(
+        endpoints.teams.vacancies(teamId, vacancyId))
+      .pipe(
+        map(response => null)
+      );
+  }
+
   store(teamId: number, roleId: number): Observable<Vacancy> {
     return this.httpClient
       .post(

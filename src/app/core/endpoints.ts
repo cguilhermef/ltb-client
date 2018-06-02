@@ -20,7 +20,10 @@ export const endpoints = {
   teams: {
     list: `${ environment.api }/teams`,
     byId: (id: number) => `${ environment.api }/teams/${ id }`,
-    vacancies: (teamId: number) => `${ environment.api }/teams/${ teamId}/vacancies`
+    vacancies: (teamId: number, vacancyId?: number) => {
+      const url = `${ environment.api }/teams/${ teamId}/vacancies`;
+      return vacancyId ? `${ url }/${ vacancyId}` : url;
+    }
   },
   tiers: `${ environment.api }/tiers`,
   riot: {

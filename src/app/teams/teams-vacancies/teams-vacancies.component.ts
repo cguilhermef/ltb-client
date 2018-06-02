@@ -53,6 +53,13 @@ export class TeamsVacanciesComponent implements OnInit {
     return path('support-icon');
   }
 
+  remove(vacancyId: number) {
+    this.service.destroy(this.team.id, vacancyId)
+      .subscribe( () => {
+        this.vacancies = this.vacancies.filter( v => v.id !== vacancyId);
+      });
+  }
+
   private setupForm() {
     this.form = this.fb.group({
       team_id: this.fb.control(this.team.id),

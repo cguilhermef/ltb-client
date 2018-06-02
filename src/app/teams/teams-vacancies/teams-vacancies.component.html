@@ -38,7 +38,9 @@
       <img [src]="positionImageBy(vacancy.role_id)" alt="" class="member__position">
     </td>
     <td class="table-list__actions">
-      <button class="button button--warning">Remover</button>
+      <button
+        (click)="remove(vacancy.id)"
+        class="button button--warning">Remover</button>
     </td>
   </tr>
   </tbody>
