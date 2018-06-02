@@ -34,7 +34,12 @@ export class TeamService {
 
   store(team: Team): Observable<Team> {
     const tmp: any = team;
+    if ( team.id !== null ) {
+      return this.update(team);
+    }
+
     tmp.modes = tmp.modes.map(m => m.id);
+
     return this.httpClient
       .post(endpoints.teams.list, tmp)
       .pipe(
@@ -42,8 +47,13 @@ export class TeamService {
       );
   }
 
-  // update(team: Team): Observable<Team> {
-  //   return this.httpClient
-  //     .put()
-  // }
+  update(team: Team): Observable<Team> {
+    const tmp: any = team;
+    tmp.modes = tmp.modes.map(m => m.id);
+    return this.httpClient
+      .put(endpoints.teams.byId(team.id), tmp)
+      .pipe(
+        map(response => response[ 'data' ])
+      );
+  }
 }

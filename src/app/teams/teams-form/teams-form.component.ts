@@ -85,13 +85,18 @@ export class TeamsFormComponent implements OnInit {
 
     this.service.store(team)
       .subscribe(response => {
-        this.notify.success('Equipe criada com sucesso!');
+        if ( !this.editing ) {
+          this.notify.success('Criado com sucesso!');
+        } else {
+          this.notify.success('Alterado com sucesso');
+        }
         this.router.navigate([ '/teams' ]);
       });
   }
 
   private setupForm() {
     this.form = this.fb.group({
+      id: this.fb.control(this.team.id),
       abbreviation: this.fb.control(this.team.abbreviation, [
         Validators.minLength(3),
         Validators.maxLength(3),
@@ -117,7 +122,6 @@ export class TeamsFormComponent implements OnInit {
 
         if ( this.editing ) {
           checked = this.team.modes.findIndex(m => m.id === mode.id) !== -1;
-          console.log(checked);
         }
 
         r.push(this.fb.group({

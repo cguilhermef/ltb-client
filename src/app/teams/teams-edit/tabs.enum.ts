@@ -1,6 +1,6 @@
 export enum Tabs {
-  TeamCandidates,
-  TeamInfo,
-  TeamMembers,
-  TeamVacancies
+  TeamCandidates = 'candidates',
+  TeamInfo = 'details',
+  TeamMembers = 'members',
+  TeamVacancies = 'vacancies'
 }

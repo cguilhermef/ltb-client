@@ -1,20 +1,25 @@
-<form class="container-fluid px-0">
+<form
+  [formGroup]="form"
+  class="container-fluid px-0">
   <div class="row align-items-end mb-3">
     <div class="col-12 col-md-4">
       <div class="form-group mb-0">
         <label for="tier-min">Posição</label>
-        <select id="tier-min" class="form-control">
-          <option value="">Selecione</option>
-          <option value="adc">Atirador</option>
-          <option value="jg">Caçador</option>
-          <option value="mid">Meio</option>
-          <option value="sup">Suporte</option>
-          <option value="top">Topo</option>
+        <select
+          formControlName="role_id"
+          id="tier-min"
+          class="form-control">
+          <option [ngValue]="null">Selecione</option>
+          <option
+            *ngFor="let role of roles"
+            [ngValue]="role.id">{{ role.name }}</option>
         </select>
       </div>
     </div>
     <div class="col-12 col-md-3">
-      <button class="button button--primary">Anunciar vaga</button>
+      <button
+        (click)="create()"
+        class="button button--primary">Anunciar vaga</button>
     </div>
   </div>
 </form>
@@ -26,25 +31,11 @@
   </tr>
   </thead>
   <tbody>
-  <tr class="member">
+  <tr
+    *ngFor="let vacancy of vacancies"
+    class="member">
     <td>
-      <img src="assets/images/top-icon.png" alt="" class="member__position">
-    </td>
-    <td class="table-list__actions">
-      <button class="button button--warning">Remover</button>
-    </td>
-  </tr>
-  <tr class="member">
-    <td>
-      <img src="assets/images/mid-icon.png" alt="" class="member__position">
-    </td>
-    <td class="table-list__actions">
-      <button class="button button--warning">Remover</button>
-    </td>
-  </tr>
-  <tr class="member">
-    <td>
-      <img src="assets/images/jungle-icon.png" alt="" class="member__position">
+      <img [src]="positionImageBy(vacancy.role_id)" alt="" class="member__position">
     </td>
     <td class="table-list__actions">
       <button class="button button--warning">Remover</button>

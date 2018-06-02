@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { VacancyService } from './vacancy.service';
+import { RegionService } from './region.service';
+import { RoleService } from './role.service';
 import { TeamService } from './team.service';
 import { MapService } from './map.service';
 import { TiersService } from './tiers.service';
@@ -11,14 +14,16 @@ import { UserService } from './user.service';
   imports: [
     CommonModule
   ],
-  declarations: [],
   providers: [
     AccountService,
     AuthService,
     MapService,
+    RegionService,
+    RoleService,
     TeamService,
     TiersService,
-    UserService
+    UserService,
+    VacancyService
   ]
 })
 export class ServicesModule { }

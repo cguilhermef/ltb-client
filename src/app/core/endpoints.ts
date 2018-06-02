@@ -14,9 +14,13 @@ export const endpoints = {
   regions: {
     list: `${ environment.api }/regions`
   },
+  roles: {
+    list: `${ environment.api }/roles`
+  },
   teams: {
     list: `${ environment.api }/teams`,
-    byId: (id: number) => `${ environment.api }/teams/${ id }`
+    byId: (id: number) => `${ environment.api }/teams/${ id }`,
+    vacancies: (teamId: number) => `${ environment.api }/teams/${ teamId}/vacancies`
   },
   tiers: `${ environment.api }/tiers`,
   riot: {

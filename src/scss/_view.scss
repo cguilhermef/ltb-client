@@ -56,6 +56,17 @@
   }
 }
 
+.empty-list {
+  background-color: lighten($bg-color, 2.5%);
+  border: 1px solid $border-color;
+  display: block;
+  font-weight: 700;
+  padding: 2rem;
+  margin-top: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
 @media (min-width: 544px) {
   .content {
     &__header {

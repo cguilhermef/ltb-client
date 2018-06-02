@@ -4,7 +4,14 @@
     <a routerLink="new" class="button button--primary">Criar equipe</a>
   </div>
   <div class="content__body">
-    <table class="table-list">
+    <div
+      *ngIf="!teams || teams.length === 0"
+      class="empty-list">
+      Vocês não possui nenhuma equipe no momento.
+    </div>
+    <table
+      *ngIf="teams?.length !== 0"
+      class="table-list">
       <thead>
       <tr>
         <th>Nome</th>

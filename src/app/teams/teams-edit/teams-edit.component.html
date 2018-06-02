@@ -6,6 +6,7 @@
     <h3
       *ngIf="!editing"
       class="content__title">Nova equipe</h3>
+    <a href="/teams" class="button button--warning ml-auto mr-3">Excluir equipe</a>
     <a href="/teams" class="button">Voltar</a>
   </div>
   <div class="content__body">
@@ -16,25 +17,26 @@
             <ul class="tabs">
               <li class="tabs__item">
                 <a
-                  routerLinkActive="tabs__link--active"
-                  routerLink="details" class="tabs__link">Dados</a>
+                  [class.tabs__link--active]="tab === tabs.TeamInfo"
+                  (click)="toggleTab(tabs.TeamInfo)"
+                  class="tabs__link">Dados</a>
               </li>
               <li class="tabs__item">
                 <a
-                  routerLinkActive="tabs__link--active"
-                  routerLink="members"
+                  [class.tabs__link--active]="tab === tabs.TeamMembers"
+                  (click)="toggleTab(tabs.TeamMembers)"
                   class="tabs__link">Membros</a>
               </li>
               <li class="tabs__item">
                 <a
-                  routerLinkActive="tabs__link--active"
-                  routerLink="candidates"
+                  [class.tabs__link--active]="tab === tabs.TeamCandidates"
+                  (click)="toggleTab(tabs.TeamCandidates)"
                   class="tabs__link">Candidatos</a>
               </li>
               <li class="tabs__item">
                 <a
-                  routerLinkActive="tabs__link--active"
-                  routerLink="vacancies"
+                  [class.tabs__link--active]="tab === tabs.TeamVacancies"
+                  (click)="toggleTab(tabs.TeamVacancies)"
                   class="tabs__link">Vagas</a>
               </li>
             </ul>
@@ -54,9 +56,10 @@
       <ng-container *ngSwitchCase="tabs.TeamCandidates">
         candidates
       </ng-container>
-      <ng-container *ngSwitchCase="tabs.TeamVacancies">
-        vacancies
-      </ng-container>
+      <ltb-teams-vacancies
+        *ngSwitchCase="tabs.TeamVacancies"
+        [roles]="roles"
+        [team]="team"></ltb-teams-vacancies>
     </ng-container>
   </div>
 </div>

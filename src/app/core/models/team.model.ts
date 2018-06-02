@@ -1,4 +1,5 @@
 import { Mode } from '@core/models/mode.model';
+import { Vacancy } from '@core/models/vacancy.model';
 
 export class Team {
   constructor(
@@ -7,7 +8,8 @@ export class Team {
     public name: string = null,
     public user_id: number = null,
     public tier_min: number = null,
-    public modes: Mode[] = null
+    public modes: Mode[] = null,
+    public vacancies: Vacancy[] = null
   ) {
   }
 }
