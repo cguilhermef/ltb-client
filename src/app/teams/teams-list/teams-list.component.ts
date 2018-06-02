@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Team } from '@core/models';
 
 @Component({
   selector: 'ltb-teams-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsListComponent implements OnInit {
 
-  constructor() { }
+  teams: Team[];
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.data
+      .subscribe( data => {
+        this.teams = data['teams'];
+      });
   }
 
 }

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MapsResolverService } from '@core/resolvers/maps-resolver.service';
 import { TeamsFormComponent } from './teams-form';
 import { TeamsVacanciesComponent } from './teams-vacancies';
 import { AuthGuard } from '@core/guards';
-import { TiersResolverService } from '@core/resolvers';
+import {
+  MapsResolverService,
+  TeamResolverService,
+  TeamsResolverService,
+  TiersResolverService
+} from '@core/resolvers';
 import { TeamsCandidatesComponent } from './teams-candidates';
 import { TeamsMembersComponent } from './teams-members';
 import { TeamsEditComponent } from './teams-edit';
@@ -15,6 +19,9 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: TeamsListComponent,
+    resolve: {
+      teams: TeamsResolverService
+    }
   },
   {
     path: 'new',
@@ -24,13 +31,13 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: TeamsFormComponent,
-        resolve: {
-          maps: MapsResolverService,
-          tiers: TiersResolverService
-        }
+        component: TeamsFormComponent
       }
-    ]
+    ],
+    resolve: {
+      maps: MapsResolverService,
+      tiers: TiersResolverService
+    }
   },
   {
     path: ':id',
@@ -38,7 +45,7 @@ const routes: Routes = [
     children: [
       {
         path: 'details',
-        component: TeamsFormComponent
+        component: TeamsFormComponent,
       },
       {
         path: 'members',
@@ -46,7 +53,8 @@ const routes: Routes = [
       },
       {
         path: 'candidates',
-        component: TeamsCandidatesComponent
+        component: TeamsCandidatesComponent,
+        canActivate: [ AuthGuard ]
       },
       {
         path: 'vacancies',
@@ -57,7 +65,12 @@ const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'details'
       },
-    ]
+    ],
+    resolve: {
+      team: TeamResolverService,
+      maps: MapsResolverService,
+      tiers: TiersResolverService
+    }
   }
 ];
 

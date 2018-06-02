@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@core/guards';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'teams',
-    loadChildren: './teams/teams.module#TeamsModule'
+    loadChildren: './teams/teams.module#TeamsModule',
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'vacancies',

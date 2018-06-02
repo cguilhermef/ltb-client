@@ -35,93 +35,65 @@
   <h5 class="mt-4">Modos de jogo</h5>
   <div class="row">
     <div
-      *ngFor="let mapItem of maps"
+      formArrayName="summonersRift"
       class="col-12 col-md mb-3 mb-lg-0">
-      <strong>{{ mapItem.name }}</strong>
-      <div class="form-check" *ngFor="let mode of mapItem.modes">
-        <input
-          (change)="changeMode(mode.id, $event.target.checked)"
-          class="form-check-input" type="checkbox" value="" id="mode-{{ mode.id }}">
-        <label class="form-check-label" for="mode-{{ mode.id }}">
-          {{ mode.name }}
-        </label>
+      <strong>Summoner's Rift</strong>
+      <div
+        class="form-check"
+        *ngFor="let option of optionsByMap('summonersRift'); let i=index;">
+        <ng-container [formGroupName]="i">
+          <input
+            formControlName="checked"
+            class="form-check-input" type="checkbox" id="sr-{{ option.get('id').value }}">
+          <label class="form-check-label" for="sr-{{ option.get('id').value }}">
+            {{ option.get('name').value }}
+          </label>
+        </ng-container>
       </div>
     </div>
-    <!--<div class="row">-->
-      <!--<strong>Summoner's Rift</strong>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(430, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="summoner-1">-->
-        <!--<label class="form-check-label" for="summoner-1">-->
-          <!--Escolha às cegas-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(400, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="summoner-2">-->
-        <!--<label class="form-check-label" for="summoner-2">-->
-          <!--Escolha alternada-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(420, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="summoner-3">-->
-        <!--<label class="form-check-label" for="summoner-3">-->
-          <!--Ranqueada solo/duo-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(440, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="summoner-4">-->
-        <!--<label class="form-check-label" for="summoner-4">-->
-          <!--Ranqueada flexível-->
-        <!--</label>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-12 col-md mt-3 mt-md-0">-->
-      <!--<strong>Twisted Treeline</strong>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(460, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="tt-normal">-->
-        <!--<label class="form-check-label" for="tt-normal">-->
-          <!--Escolha às cegas-->
-        <!--</label>-->
-      <!--</div>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(470, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="tt-ranked">-->
-        <!--<label class="form-check-label" for="tt-ranked">-->
-          <!--Ranqueada-->
-        <!--</label>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col-12 col-md mt-3 mt-md-0">-->
-      <!--<strong>Outros</strong>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(700, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="clash">-->
-        <!--<label class="form-check-label" for="clash">Clash</label>-->
-      <!--</div>-->
-      <!--<div class="form-check">-->
-        <!--<input-->
-          <!--(change)="changeMode(450, $event.target.checked)"-->
-          <!--class="form-check-input" type="checkbox" value="" id="aram">-->
-        <!--<label class="form-check-label" for="aram">ARAM</label>-->
-      <!--</div>-->
-    <!--</div>-->
+    <div
+      formArrayName="twistedTreeline"
+      class="col-12 col-md mb-3 mb-lg-0">
+      <strong>Twisted Treeline</strong>
+      <div
+        class="form-check"
+        *ngFor="let option of optionsByMap('twistedTreeline'); let i=index;">
+        <ng-container [formGroupName]="i">
+          <input
+            formControlName="checked"
+            class="form-check-input" type="checkbox" id="tt-{{ option.get('id').value }}">
+          <label class="form-check-label" for="tt-{{ option.get('id').value }}">
+            {{ option.get('name').value }}
+          </label>
+        </ng-container>
+      </div>
+    </div>
+    <div
+      formArrayName="howlingAbyss"
+      class="col-12 col-md mb-3 mb-lg-0">
+      <strong>Howling Abyss</strong>
+      <div
+        class="form-check"
+        *ngFor="let option of optionsByMap('howlingAbyss'); let i=index;">
+        <ng-container [formGroupName]="i">
+          <input
+            formControlName="checked"
+            class="form-check-input" type="checkbox" id="ha-{{ option.get('id').value }}">
+          <label class="form-check-label" for="ha-{{ option.get('id').value }}">
+            {{ option.get('name').value }}
+          </label>
+        </ng-container>
+      </div>
+    </div>
   </div>
   <div class="row justify-content-md-end mt-3">
     <div class="col-12 col-md-2">
       <button
         (click)="save()"
-        class="button button--primary btn-block btn-md-">Criar</button>
+        class="button button--primary btn-block btn-md-">
+        <ng-container *ngIf="editing">Salvar</ng-container>
+        <ng-container *ngIf="!editing">Criar</ng-container>
+      </button>
     </div>
   </div>
 </form>

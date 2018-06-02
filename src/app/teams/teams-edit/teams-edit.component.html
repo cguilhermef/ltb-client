@@ -2,7 +2,7 @@
   <div class="content__header">
     <h3
       *ngIf="editing"
-      class="content__title">Nome da equipe aqui</h3>
+      class="content__title">{{ team.abbreviation }} - {{ team.name }}</h3>
     <h3
       *ngIf="!editing"
       class="content__title">Nova equipe</h3>
@@ -42,6 +42,21 @@
         </div>
       </div>
     </ng-container>
-    <router-outlet></router-outlet>
+    <ng-container [ngSwitch]="tab">
+      <ltb-teams-form
+        *ngSwitchCase="tabs.TeamInfo"
+        [(team)]="team"
+        [tiers]="tiers"
+        [maps]="maps"></ltb-teams-form>
+      <ng-container *ngSwitchCase="tabs.TeamMembers">
+        members
+      </ng-container>
+      <ng-container *ngSwitchCase="tabs.TeamCandidates">
+        candidates
+      </ng-container>
+      <ng-container *ngSwitchCase="tabs.TeamVacancies">
+        vacancies
+      </ng-container>
+    </ng-container>
   </div>
 </div>

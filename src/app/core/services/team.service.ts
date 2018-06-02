@@ -14,11 +14,36 @@ export class TeamService {
     protected httpClient: HttpClient
   ) { }
 
-  store(team: Team): Observable<Team> {
+  index(): Observable<Team[]> {
     return this.httpClient
-      .post(endpoints.teams.list, team)
+      .get(endpoints.teams.list)
       .pipe(
-        map(response => response['data'])
+        map(response => {
+          return response[ 'data' ];
+        })
       );
   }
+
+  show(id: number): Observable<Team> {
+    return this.httpClient
+      .get(endpoints.teams.byId(id))
+      .pipe(
+        map(response => response as Team)
+      );
+  }
+
+  store(team: Team): Observable<Team> {
+    const tmp: any = team;
+    tmp.modes = tmp.modes.map(m => m.id);
+    return this.httpClient
+      .post(endpoints.teams.list, tmp)
+      .pipe(
+        map(response => response[ 'data' ])
+      );
+  }
+
+  // update(team: Team): Observable<Team> {
+  //   return this.httpClient
+  //     .put()
+  // }
 }

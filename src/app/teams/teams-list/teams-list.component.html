@@ -12,36 +12,18 @@
       </tr>
       </thead>
       <tbody>
+      <ng-container *ngFor="let team of teams">
       <tr class="team">
         <td>
-          <span class="team__abbr">TPB</span>Tibbers, porrada e bomba
+          <span class="team__abbr">{{ team.abbreviation }}</span>{{ team.name }}
         </td>
         <td class="table-list__actions">
           <button
-            routerLink="/teams/1"
+            [routerLink]="['/teams', team.id]"
             class="button button--primary">Gerenciar</button>
         </td>
       </tr>
-      <tr>
-        <td>
-          <span class="team__abbr">HYP</span>Harry Poke
-        </td>
-        <td class="table-list__actions">
-          <button
-            routerLink="/teams/3"
-            class="button button--primary">Gerenciar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span class="team__abbr">ADD</span>Armada Dumbledore
-        </td>
-        <td class="table-list__actions">
-          <button
-            routerLink="/teams/2"
-            class="button button--primary">Gerenciar</button>
-        </td>
-      </tr>
+      </ng-container>
       </tbody>
     </table>
   </div>
