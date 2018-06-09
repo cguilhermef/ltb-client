@@ -6,7 +6,9 @@
     <h3
       *ngIf="!editing"
       class="content__title">Nova equipe</h3>
-    <a href="/teams" class="button button--warning ml-auto mr-3">Excluir equipe</a>
+    <a
+      *ngIf="editing"
+      href="/teams" class="button button--warning ml-auto mr-3">Excluir equipe</a>
     <a href="/teams" class="button">Voltar</a>
   </div>
   <div class="content__body">
@@ -23,9 +25,9 @@
               </li>
               <li class="tabs__item">
                 <a
-                  [class.tabs__link--active]="tab === tabs.TeamMembers"
-                  (click)="toggleTab(tabs.TeamMembers)"
-                  class="tabs__link">Membros</a>
+                  [class.tabs__link--active]="tab === tabs.TeamVacancies"
+                  (click)="toggleTab(tabs.TeamVacancies)"
+                  class="tabs__link">Vagas</a>
               </li>
               <li class="tabs__item">
                 <a
@@ -35,9 +37,9 @@
               </li>
               <li class="tabs__item">
                 <a
-                  [class.tabs__link--active]="tab === tabs.TeamVacancies"
-                  (click)="toggleTab(tabs.TeamVacancies)"
-                  class="tabs__link">Vagas</a>
+                  [class.tabs__link--active]="tab === tabs.TeamMembers"
+                  (click)="toggleTab(tabs.TeamMembers)"
+                  class="tabs__link">Membros</a>
               </li>
             </ul>
           </div>
@@ -51,10 +53,10 @@
         [tiers]="tiers"
         [maps]="maps"></ltb-teams-form>
       <ng-container *ngSwitchCase="tabs.TeamMembers">
-        members
+        <ltb-teams-members></ltb-teams-members>
       </ng-container>
       <ng-container *ngSwitchCase="tabs.TeamCandidates">
-        candidates
+        <ltb-teams-candidates></ltb-teams-candidates>
       </ng-container>
       <ltb-teams-vacancies
         *ngSwitchCase="tabs.TeamVacancies"

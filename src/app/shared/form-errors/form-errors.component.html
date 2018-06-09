@@ -6,6 +6,7 @@
   <div class="form-errors__item" *ngIf="errors.maxlength">
     Deve ter no máximo {{ errors.maxlength['requiredLength']}} caracteres.
   </div>
+  <div class="form-errors__item" *ngIf="errors.email">Email inválido.</div>
   <div class="form-errors__item" *ngIf="errors.passwordsMismatch">As senhas devem ser iguais.</div>
   <div class="form-errors__item" *ngIf="errors.backend">{{ errors.backend }}</div>
   <div class="form-errors__item" *ngIf="errors.equalTo">{{ errors.equalTo }}</div>

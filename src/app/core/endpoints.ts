@@ -1,6 +1,5 @@
+import { RiotGameVersion } from '@core/constants';
 import { environment } from '@env/environment';
-
-const patch = '6.24.1';
 
 export const endpoints = {
   api: environment.api,
@@ -28,7 +27,7 @@ export const endpoints = {
   tiers: `${ environment.api }/tiers`,
   riot: {
     profileIcons: (iconId: number) => {
-      return `//ddragon.leagueoflegends.com/cdn/${ patch }/img/profileicon/${ iconId }.png `
+      return `//ddragon.leagueoflegends.com/cdn/${ RiotGameVersion }/img/profileicon/${ iconId }.png `
     }
   }
 };

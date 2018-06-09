@@ -25,6 +25,17 @@ export class TeamsVacanciesComponent implements OnInit {
     this.setupForm();
   }
 
+  availableRoles(): Role[] {
+    return this.roles.reduce(
+      (result, role) => {
+        const vacancy = this.vacancies.find(v => v.role_id === role.id);
+        if ( !vacancy ) {
+          result.push(role);
+        }
+        return result;
+      }, []);
+  }
+
   create() {
     const value = JSON.parse(JSON.stringify(this.form.value));
     this.service.store(
@@ -55,8 +66,8 @@ export class TeamsVacanciesComponent implements OnInit {
 
   remove(vacancyId: number) {
     this.service.destroy(this.team.id, vacancyId)
-      .subscribe( () => {
-        this.vacancies = this.vacancies.filter( v => v.id !== vacancyId);
+      .subscribe(() => {
+        this.vacancies = this.vacancies.filter(v => v.id !== vacancyId);
       });
   }
 

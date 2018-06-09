@@ -108,8 +108,18 @@ export class TeamsFormComponent implements OnInit {
         Validators.maxLength(30)
       ]),
       tier_min: this.fb.control(this.team.tier_min, Validators.required),
-      summonersRift: this.fb.array(this.modesByMapId(Maps.SummonersRift)),
-      twistedTreeline: this.fb.array(this.modesByMapId(Maps.TwistedTreeline)),
+      summonersRift: this.fb.array(
+        this.modesByMapId(Maps.SummonersRift)
+          .sort( (a, b) => {
+            return a.get('id').value - b.get('id').value;
+          })
+      ),
+      twistedTreeline: this.fb.array(
+        this.modesByMapId(Maps.TwistedTreeline)
+          .sort( (a, b) => {
+            return a.get('id').value - b.get('id').value;
+          })
+      ),
       howlingAbyss: this.fb.array(this.modesByMapId(Maps.HowlingAbyss)),
     });
   }

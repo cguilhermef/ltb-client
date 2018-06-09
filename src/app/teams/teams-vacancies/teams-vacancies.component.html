@@ -11,7 +11,7 @@
           class="form-control">
           <option [ngValue]="null">Selecione</option>
           <option
-            *ngFor="let role of roles"
+            *ngFor="let role of availableRoles()"
             [ngValue]="role.id">{{ role.name }}</option>
         </select>
       </div>
@@ -23,7 +23,12 @@
     </div>
   </div>
 </form>
-<table class="table-list">
+<div
+  *ngIf="!vacancies || vacancies.length === 0"
+  class="empty-list">
+  Nenhuma vaga anunciada.
+</div>
+<table class="table-list" *ngIf="vacancies?.length !== 0">
   <thead>
   <tr>
     <th>Posição</th>
