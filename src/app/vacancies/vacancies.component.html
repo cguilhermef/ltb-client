@@ -67,62 +67,20 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="advertisement">
+    <tr
+      *ngFor="let vacancy of vacancies"
+      class="advertisement">
       <td>
-        <img src="assets/images/top-icon.png" class="advertisement__icon" alt="">
+        <img [src]="positionIcon(vacancy['role_id'])" class="advertisement__icon" alt="">
       </td>
       <td class="advertisement__tier-limits">
-        Platina III
+        {{ tierById(vacancy['tier_min']).name }}
       </td>
-      <td class="advertisement__team">TPB - Tibbers, porrada e bomba</td>
-      <td>
-        <a href="" class="button button--primary">Candidatar-se</a>
+      <td class="advertisement__team">
+        <a [routerLink]="['/teams/', vacancy['team_id']]">
+          {{ vacancy['abbreviation'] }} - {{ vacancy['name'] }}
+        </a>
       </td>
-    </tr>
-    <tr class="advertisement">
-      <td>
-        <img src="assets/images/mid-icon.png" class="advertisement__icon"  alt="">
-      </td>
-      <td class="advertisement__tier-limits">
-        Mestre
-      </td>
-      <td class="advertisement__team">HYP - Harry Poke</td>
-      <td>
-        <a href="" class="button button--primary">Candidatar-se</a>
-      </td>
-    </tr>
-    <tr class="advertisement">
-      <td>
-        <img src="assets/images/bot-icon.png" class="advertisement__icon"  alt="">
-      </td>
-      <td class="advertisement__tier-limits">
-        Prata V
-      </td>
-      <td class="advertisement__team">CNM - Cazuza Não Morreu</td>
-      <td>
-        <a href="" class="button button--primary">Candidatar-se</a>
-      </td>
-    </tr>
-    <tr class="advertisement">
-      <td>
-        <img src="assets/images/jungle-icon.png" class="advertisement__icon"  alt="">
-      </td>
-      <td class="advertisement__tier-limits">
-        Bronze V
-      </td>
-      <td class="advertisement__team">YOP - Yasuo Open</td>
-      <td>
-        <a href="" class="button button--primary">Candidatar-se</a>
-      </td>
-    </tr>
-    <tr class="advertisement">
-      <td>
-        <img src="assets/images/support-icon.png" class="advertisement__icon"  alt="">
-      </td>
-      <td class="advertisement__tier-limits">
-        Prata V
-      </td>
-      <td class="advertisement__team">T97 - Lais de Guia</td>
       <td>
         <a href="" class="button button--primary">Candidatar-se</a>
       </td>

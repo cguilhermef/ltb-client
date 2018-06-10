@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PositionIconById } from '@core/helpers';
 import { Role, Team, Vacancy } from '@core/models';
 import { VacancyService } from '@core/services';
 
@@ -48,20 +49,21 @@ export class TeamsVacanciesComponent implements OnInit {
   }
 
   positionImageBy(roleId: number): string {
-    const path = (position: string) => `assets/images/${ position }.png`;
-    if ( roleId === 1 ) {
-      return path('top-icon');
-    }
-    if ( roleId === 2 ) {
-      return path('mid-icon');
-    }
-    if ( roleId === 3 ) {
-      return path('bot-icon');
-    }
-    if ( roleId === 4 ) {
-      return path('jungle-icon');
-    }
-    return path('support-icon');
+    return PositionIconById(roleId);
+    // const path = (position: string) => `assets/images/${ position }.png`;
+    // if ( roleId === 1 ) {
+    //   return path('top-icon');
+    // }
+    // if ( roleId === 2 ) {
+    //   return path('mid-icon');
+    // }
+    // if ( roleId === 3 ) {
+    //   return path('bot-icon');
+    // }
+    // if ( roleId === 4 ) {
+    //   return path('jungle-icon');
+    // }
+    // return path('support-icon');
   }
 
   remove(vacancyId: number) {

@@ -29,5 +29,8 @@ export const endpoints = {
     profileIcons: (iconId: number) => {
       return `//ddragon.leagueoflegends.com/cdn/${ RiotGameVersion }/img/profileicon/${ iconId }.png `
     }
+  },
+  vacancies: {
+    list: `${ environment.api }/vacancies`
   }
 };

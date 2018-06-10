@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { endpoints } from '@core/endpoints';
-import { Vacancy } from '@core/models';
+import { Tier, Vacancy } from '@core/models';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 
@@ -13,6 +13,14 @@ export class VacancyService {
   constructor(
     public httpClient: HttpClient
   ) { }
+
+  index(): Observable<Vacancy[]> {
+    return this.httpClient
+      .get<Tier[]>(endpoints.vacancies.list)
+      .pipe(
+        map(response => response['data'])
+      );
+  }
 
   destroy(teamId: number, vacancyId: number): Observable<void> {
     return this.httpClient

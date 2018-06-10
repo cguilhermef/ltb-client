@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService, UserService } from '@core/services';
 import { Tabs } from './tabs.enum';
 import { Map, Role, Team, Tier } from '@core/models';
 
@@ -12,6 +13,7 @@ export class TeamsEditComponent implements OnInit {
 
   editing: boolean;
   maps: Map[] = [];
+  owner = false;
   roles: Role[] = [];
   tab: Tabs;
   tabs = Tabs;
@@ -20,7 +22,8 @@ export class TeamsEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private user: UserService
   ) { }
 
   ngOnInit() {
@@ -35,6 +38,9 @@ export class TeamsEditComponent implements OnInit {
         }
         if ( !this.editing ) {
           this.team = new Team();
+        }
+        if (!this.team.id || this.user.user.id === this.team.id) {
+          this.owner = true;
         }
         this.setTab();
       });

@@ -1,0 +1,66 @@
+<h4 class="mt-3">Capitão</h4>
+<div class="row">
+  <div class="col-12">
+    <div class="member">
+      <img
+        class="member__icon"
+        title="{{ captain.name }}"
+        [src]="profileIcon(captain.profile_icon_id)" alt="">
+      <span class="member__nickname">{{ captain.name }}</span>
+    </div>
+  </div>
+</div>
+<h4 class="mt-4">Vagas</h4>
+<div
+  *ngIf="!vacancies || vacancies.length === 0"
+  class="empty-list">
+  Nenhuma vaga anunciada.
+</div>
+<table class="table-list" *ngIf="vacancies?.length !== 0">
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let vacancy of vacancies"
+    class="member">
+    <td>
+      <img [src]="positionImageBy(vacancy.role_id)" alt="" class="member__position">
+    </td>
+    <td class="table-list__actions">
+      <button class="button button--primary">Candidatar-se</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h4 class="mt-4">Membros</h4>
+<div
+  *ngIf="!members || members.length === 0"
+  class="empty-list">
+  Nenhum membro cadastrado.
+</div>
+<table class="table-list">
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let member of members" class="member">
+    <td>
+      <img [src]="positionImageBy(member['role_id'])" alt="" class="member__position">
+    </td>
+    <td class="text-left">
+      <img
+        class="member__icon"
+        title="{{ member['name'] }}"
+        [src]="profileIcon(member['profile_icon_id'])" alt="">
+      <span class="member__nickname">{{ member['name'] }}</span>
+    </td>
+  </tr>
+  </tbody>
+</table>

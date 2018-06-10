@@ -26,8 +26,13 @@
         </td>
         <td class="table-list__actions">
           <button
+            *ngIf="owner(team)"
             [routerLink]="['/teams', team.id]"
             class="button button--primary">Gerenciar</button>
+          <button
+            *ngIf="!owner(team)"
+            [routerLink]="['/teams', team.id]"
+            class="button button--primary">Detalhes</button>
         </td>
       </tr>
       </ng-container>

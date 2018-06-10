@@ -5,6 +5,7 @@ import { TeamsResolverService } from './teams-resolver.service';
 import { MapsResolverService } from './maps-resolver.service';
 import { RegionsResolverService } from './regions-resolver.service';
 import { TiersResolverService } from './tiers-resolver.service';
+import { VacanciesResolverService } from './vacancies-resolver.service';
 
 @NgModule({
   providers: [
@@ -13,7 +14,8 @@ import { TiersResolverService } from './tiers-resolver.service';
     RolesResolverService,
     TeamResolverService,
     TeamsResolverService,
-    TiersResolverService
+    TiersResolverService,
+    VacanciesResolverService
   ]
 })
 export class ResolversModule { }
