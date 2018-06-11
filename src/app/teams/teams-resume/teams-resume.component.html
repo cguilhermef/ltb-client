@@ -10,32 +10,36 @@
     </div>
   </div>
 </div>
-<h4 class="mt-4">Vagas</h4>
-<div
-  *ngIf="!vacancies || vacancies.length === 0"
-  class="empty-list">
-  Nenhuma vaga anunciada.
-</div>
-<table class="table-list" *ngIf="vacancies?.length !== 0">
-  <thead>
-  <tr>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr
-    *ngFor="let vacancy of vacancies"
-    class="member">
-    <td>
-      <img [src]="positionImageBy(vacancy.role_id)" alt="" class="member__position">
-    </td>
-    <td class="table-list__actions">
-      <button class="button button--primary">Candidatar-se</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<ng-container *ngIf="showVacancies">
+  <h4 class="mt-4">Vagas</h4>
+  <div
+    *ngIf="!vacancies || vacancies.length === 0"
+    class="empty-list">
+    Nenhuma vaga anunciada.
+  </div>
+  <table class="table-list" *ngIf="vacancies?.length !== 0">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let vacancy of vacancies"
+      class="member">
+      <td>
+        <img [src]="positionImageBy(vacancy.role_id)" alt="" class="member__position">
+      </td>
+      <td class="table-list__actions">
+        <button
+          (click)="candidateTo(vacancy.id)"
+          class="button button--primary">Candidatar-se</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
 <h4 class="mt-4">Membros</h4>
 <div
   *ngIf="!members || members.length === 0"

@@ -1,4 +1,5 @@
 export * from './account.model';
+export * from './candidate.model';
 export * from './map.model';
 export * from './mode.model';
 export * from './role.model';

@@ -57,7 +57,14 @@
       <a href="" class="button d-inline-flex">Limpar</a>
     </div>
   </form>
-  <table class="table-list advertisements-list">
+  <div
+    *ngIf="!vacancies || vacancies.length === 0"
+    class="empty-list">
+    Nenhuma vaga encontrada.
+  </div>
+  <table
+    *ngIf="vacancies?.length !== 0"
+    class="table-list advertisements-list">
     <thead>
     <tr>
       <th>Posição</th>

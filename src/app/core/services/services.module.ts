@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CandidateService } from './candidate.service';
 import { VacancyService } from './vacancy.service';
 import { RegionService } from './region.service';
 import { RoleService } from './role.service';
@@ -17,6 +18,7 @@ import { UserService } from './user.service';
   providers: [
     AccountService,
     AuthService,
+    CandidateService,
     MapService,
     RegionService,
     RoleService,

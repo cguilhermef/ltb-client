@@ -58,7 +58,8 @@
         <ltb-teams-members></ltb-teams-members>
       </ng-container>
       <ng-container *ngSwitchCase="tabs.TeamCandidates">
-        <ltb-teams-candidates></ltb-teams-candidates>
+        <ltb-teams-candidates
+          [(team)]="team"></ltb-teams-candidates>
       </ng-container>
       <ltb-teams-vacancies
         *ngSwitchCase="tabs.TeamVacancies"

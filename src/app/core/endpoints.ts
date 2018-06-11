@@ -3,6 +3,9 @@ import { environment } from '@env/environment';
 
 export const endpoints = {
   api: environment.api,
+  candidates: {
+    byId: (id: number) => `${ environment.api}/candidates/${ id }`
+  },
   auth: {
     login: `${ environment.api}/login`,
     register: `${ environment.api }/register`
