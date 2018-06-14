@@ -55,11 +55,10 @@
         [tiers]="tiers"
         [maps]="maps"></ltb-teams-form>
       <ng-container *ngSwitchCase="tabs.TeamMembers">
-        <ltb-teams-members></ltb-teams-members>
+        <ltb-teams-members [(team)]="team"></ltb-teams-members>
       </ng-container>
       <ng-container *ngSwitchCase="tabs.TeamCandidates">
-        <ltb-teams-candidates
-          [(team)]="team"></ltb-teams-candidates>
+        <ltb-teams-candidates [(team)]="team"></ltb-teams-candidates>
       </ng-container>
       <ltb-teams-vacancies
         *ngSwitchCase="tabs.TeamVacancies"

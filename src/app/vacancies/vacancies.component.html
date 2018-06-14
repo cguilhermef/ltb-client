@@ -84,7 +84,9 @@
         {{ tierById(vacancy['tier_min']).name }}
       </td>
       <td class="advertisement__team">
-        <a [routerLink]="['/teams/', vacancy['team_id']]">
+        <a
+          [routerLink]="['/teams/', vacancy['team_id']]"
+          class="--link">
           {{ vacancy['abbreviation'] }} - {{ vacancy['name'] }}
         </a>
       </td>

@@ -19,7 +19,8 @@ const routes: Routes = [
     component: TeamsListComponent,
     resolve: {
       teams: TeamsResolverService
-    }
+    },
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'new',

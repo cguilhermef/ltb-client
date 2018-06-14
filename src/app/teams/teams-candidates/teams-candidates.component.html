@@ -1,4 +1,9 @@
-<table class="table-list">
+<div
+  *ngIf="!hasCandidates"
+  class="empty-list">
+  Não há candidatos no momento.
+</div>
+<table class="table-list" *ngIf="hasCandidates">
   <thead>
   <tr>
     <th>Posição</th>
@@ -7,27 +12,31 @@
   </tr>
   </thead>
   <tbody>
-  <tr
-    *ngFor="let candidate of candidates"
-    class="member">
-    <td>
-      <img [src]="positionIconById(candidate.vacancy.role_id)" alt="" class="member__position">
-    </td>
-    <td>
-      <img
-        class="member__icon"
-        title="{{ candidate.summoner.name }}"
-        [src]="profileIconById(candidate.summoner.profile_icon_id)" alt="">
-      <span class="member__nickname">{{ candidate.summoner.name }}</span>
-    </td>
-    <td class="table-list__actions">
-      <button
-        (click)="reject(candidate.id)"
-        class="button button--warning">Recusar</button>
-      <button
-        (click)="accept(candidate.id)"
-        class="button button--primary ml-3">Aceitar</button>
-    </td>
-  </tr>
+  <ng-container *ngFor="let vacancy of vacancies">
+    <tr
+      *ngFor="let candidate of vacancy['candidates']"
+      class="member">
+      <td>
+        <img [src]="positionIconById(vacancy.role_id)" alt="" class="member__position">
+      </td>
+      <td>
+        <img
+          class="member__icon"
+          title="{{ candidate.user.summoner.name }}"
+          [src]="profileIconById(candidate.user.summoner.profile_icon_id)" alt="">
+        <span class="member__nickname">{{ candidate.user.summoner.name }}</span>
+      </td>
+      <td class="table-list__actions">
+        <button
+          (click)="reject(candidate.id)"
+          class="button button--warning">Recusar
+        </button>
+        <button
+          (click)="accept(candidate.id)"
+          class="button button--primary ml-3">Aceitar
+        </button>
+      </td>
+    </tr>
+  </ng-container>
   </tbody>
 </table>

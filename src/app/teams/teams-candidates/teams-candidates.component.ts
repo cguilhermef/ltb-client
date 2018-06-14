@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PositionIconById, ProfileIconUrl } from '@core/helpers';
-import { Candidate, Summoner, Team } from '@core/models';
+import { Candidate, Summoner, Team, Vacancy } from '@core/models';
 import { CandidateService } from '@core/services';
 import * as _ from 'lodash';
 
@@ -12,6 +12,7 @@ import * as _ from 'lodash';
 export class TeamsCandidatesComponent implements OnInit {
 
   @Input() team: Team;
+  @Output() teamChange: EventEmitter<Team> = new EventEmitter<Team>();
 
   constructor(
     protected candidateService: CandidateService
@@ -20,23 +21,17 @@ export class TeamsCandidatesComponent implements OnInit {
   ngOnInit() {
   }
 
-  get candidates(): Candidate[] {
-    if ( !this.team.vacancies ) {
-      return [];
-    }
-    return this.team.vacancies
-      .reduce((result, vacancy) => {
-        const candidates = vacancy[ 'candidates' ]
-          .reduce((r, c) => {
-            r.push({
-              id: c['id'],
-              vacancy: vacancy,
-              summoner: c[ 'user' ][ 'summoner' ]
-            });
-            return r;
-          }, []);
-        return result.concat(candidates);
-      }, []);
+  get hasCandidates(): boolean {
+    return this.team.vacancies.reduce((r, v) => {
+      if ( !v.candidates ) {
+        return r;
+      }
+      return true;
+    }, false);
+  }
+
+  get vacancies(): Vacancy[] {
+    return this.team.vacancies;
   }
 
   profileIconById(iconId: number): string {
@@ -49,15 +44,33 @@ export class TeamsCandidatesComponent implements OnInit {
 
   accept(candidateId: number) {
     this.candidateService.accept(candidateId, this.team.id)
-      .subscribe( r => {
-        console.log('ok');
+      .subscribe(member => {
+        this.removeCandidate(candidateId);
+        this.team.members = [ ...this.team.members, member ];
+        this.teamChange.emit(this.team);
       });
   }
 
   reject(candidateId: number) {
     this.candidateService.reject(candidateId)
-      .subscribe( () => {
+      .subscribe(() => {
         console.log('ok!');
+      });
+  }
+
+  private removeCandidate(candidateId: number) {
+    this.team.vacancies = this.team.vacancies
+      .map(v => {
+        if ( !v.candidates ) {
+          return v;
+        }
+        v.candidates = v.candidates.reduce((r, c) => {
+          if ( c.id !== candidateId ) {
+            r.push(c);
+          }
+          return r;
+        }, []);
+        return v;
       });
   }
 

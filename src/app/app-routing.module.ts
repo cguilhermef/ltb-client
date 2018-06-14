@@ -13,8 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'teams',
-    loadChildren: './teams/teams.module#TeamsModule',
-    canActivate: [ AuthGuard ]
+    loadChildren: './teams/teams.module#TeamsModule'
   },
   {
     path: 'vacancies',
