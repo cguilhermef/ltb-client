@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MemberService } from './member.service';
 import { CandidateService } from './candidate.service';
 import { VacancyService } from './vacancy.service';
 import { RegionService } from './region.service';
@@ -20,6 +21,7 @@ import { UserService } from './user.service';
     AuthService,
     CandidateService,
     MapService,
+    MemberService,
     RegionService,
     RoleService,
     TeamService,

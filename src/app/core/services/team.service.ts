@@ -14,6 +14,11 @@ export class TeamService {
     protected httpClient: HttpClient
   ) { }
 
+  destroy(teamId: number): Observable<any> {
+    return this.httpClient
+      .delete(endpoints.teams.byId(teamId));
+  }
+
   index(): Observable<Team[]> {
     return this.httpClient
       .get(endpoints.teams.list)

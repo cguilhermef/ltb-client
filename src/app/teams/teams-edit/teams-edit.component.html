@@ -6,9 +6,14 @@
     <h3
       *ngIf="!editing"
       class="content__title">Nova equipe</h3>
-    <a
+    <button
       *ngIf="editing && owner"
-      href="/teams" class="button button--warning ml-auto mr-3">Excluir equipe</a>
+      (click)="remove()"
+      class="button button--warning ml-auto mr-3">Excluir equipe</button>
+    <button
+      *ngIf="!owner"
+      (click)="leave()"
+      class="button button--warning ml-auto mr-3">Sair da equipe</button>
     <a href="/teams" class="button">Voltar</a>
   </div>
   <div

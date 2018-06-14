@@ -13,6 +13,9 @@ export const endpoints = {
   maps: {
     list: `${ environment.api }/maps`
   },
+  members: {
+    byId: (id: number) => `${ environment.api }/members/${ id }`
+  },
   regions: {
     list: `${ environment.api }/regions`
   },

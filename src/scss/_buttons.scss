@@ -82,6 +82,11 @@
     &:hover {
       background-color: rgba(#724c1c, .9);
     }
+    &:disabled {
+      background-color: rgba(#726B67, .9);
+      border-color: #726B67;
+      cursor: default;
+    }
   }
   &--warning {
     border: 1px solid lighten(#982a0b, 5%);
@@ -89,6 +94,9 @@
     &:focus,
     &:hover {
       background-color: rgba(#982a0b, .9);
+    }
+    &:disabled {
+      background-color: rgba(#98654B, .9);
     }
   }
 }

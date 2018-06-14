@@ -2,6 +2,7 @@ export * from './account.service';
 export * from './candidate.service';
 export * from './auth.service';
 export * from './map.service';
+export * from './member.service';
 export * from './role.service';
 export * from './services.module';
 export * from './team.service';

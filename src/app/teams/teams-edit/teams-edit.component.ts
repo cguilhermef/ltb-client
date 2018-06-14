@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService, UserService } from '@core/services';
+import { NotifyService } from '@core/notify';
+import { AuthService, MemberService, TeamService, UserService } from '@core/services';
 import { Tabs } from './tabs.enum';
 import { Map, Role, Team, Tier } from '@core/models';
 
@@ -23,6 +24,9 @@ export class TeamsEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    protected service: TeamService,
+    protected notify: NotifyService,
+    protected memberService: MemberService,
     private user: UserService
   ) { }
 
@@ -39,14 +43,26 @@ export class TeamsEditComponent implements OnInit {
         if ( !this.editing ) {
           this.team = new Team();
         }
-        if (!this.team.id || this.user.user.id === this.team.id) {
+        if ( !this.team.id || this.user.user.id === this.team.user_id ) {
           this.owner = true;
         }
         this.setTab();
       });
     this.route.fragment
-      .subscribe( fragment => {
+      .subscribe(fragment => {
         this.setTab();
+      });
+  }
+
+  leave() {
+    // this.memberService.destroy()
+    this.notify.info('Funcionalidade não implementada!');
+  }
+
+  remove() {
+    this.service.destroy(this.team.id)
+      .subscribe(() => {
+        this.router.navigate([ '/teams' ]);
       });
   }
 

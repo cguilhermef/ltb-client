@@ -21,10 +21,10 @@ export class VacancyService {
     return this.httpClient
       .post(
         `${ environment.api }/vacancies/${ vacancyId }/candidates`,
-        { user_id: this.userService.user.id })
-      .pipe(
-        map(response => response[ 'data' ])
-      );
+        { user_id: this.userService.user.id });
+      // .pipe(
+      //   map(response => response[ 'data' ])
+      // );
   }
 
   index(): Observable<Vacancy[]> {

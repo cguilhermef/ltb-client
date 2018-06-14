@@ -23,7 +23,7 @@ export class TeamsCandidatesComponent implements OnInit {
 
   get hasCandidates(): boolean {
     return this.team.vacancies.reduce((r, v) => {
-      if ( !v.candidates ) {
+      if ( !v.candidates.length ) {
         return r;
       }
       return true;
@@ -54,7 +54,8 @@ export class TeamsCandidatesComponent implements OnInit {
   reject(candidateId: number) {
     this.candidateService.reject(candidateId)
       .subscribe(() => {
-        console.log('ok!');
+        this.removeCandidate(candidateId);
+        this.teamChange.emit(this.team);
       });
   }
 
