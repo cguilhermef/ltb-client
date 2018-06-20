@@ -11,14 +11,12 @@ import { AuthService, UserService } from '@core/services';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn = false;
   showMenuUser = false;
   showMenuMobile = false;
   account: Account;
   constructor(
     protected authService: AuthService,
-    protected router: Router,
-    protected userService: UserService
+    protected router: Router
   ) {
   }
 
@@ -28,20 +26,24 @@ export class HeaderComponent implements OnInit {
         this.hideMenuUser();
       }
     });
-    this.isLoggedIn = this.authService.authtenticated;
-    this.account = this.isLoggedIn ? this.userService.account : null;
+    // this.isLoggedIn = this.authService.authtenticated;
+    this.account = this.isLoggedIn ? this.authService.account : null;
 
     this.authService.loggedIn$
       .subscribe( account => {
-        this.isLoggedIn = true;
+        // this.isLoggedIn = true;
         this.account = account;
       });
 
     this.authService.loggedOut$
       .subscribe( () => {
-        this.isLoggedIn = false;
+        // this.isLoggedIn = false;
         this.account = null;
       });
+  }
+
+  get isLoggedIn(): boolean {
+    return this.authService.authtenticated;
   }
 
   get nickname(): string {
@@ -49,6 +51,9 @@ export class HeaderComponent implements OnInit {
   }
 
   get profileIconUrl(): string {
+    if (!this.account || !this.account.summoner) {
+      return null;
+    }
     const iconId = this.account ? this.account.summoner.profile_icon_id : null;
     if (!iconId) {
       return null;
