@@ -1,0 +1,19 @@
+<div class="rz-modal">
+  <div
+    [class.--large]="large"
+    class="rz-modal__content">
+    <div
+      [ngClass]="headerStyle"
+      class="rz-modal__header">
+      <h2 class="rz-modal__title">{{ modalTitle }}</h2>
+    </div>
+    <div
+      [ngClass]="bodyStyle"
+      class="rz-modal__body">
+      <ng-content select="[body]"></ng-content>
+    </div>
+    <div class="rz-modal__footer">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>
