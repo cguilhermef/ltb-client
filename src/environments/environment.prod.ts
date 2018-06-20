@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  api: '//api.lolteambuilder.com/public/api'
 };
